@@ -1,0 +1,86 @@
+package Clases.Model;
+
+import java.time.LocalDate;
+
+public class Prestamo {
+    
+    private String alumno;
+    private String libro;
+    private LocalDate fechaDePrestamo;
+    private LocalDate fechaDevolucion;
+    private LocalDate fechaDevuelta;
+    private int id;
+    private boolean vencido=false;
+
+    public boolean isVencido() {
+        return vencido;
+    }
+
+    public void setVencido(boolean vencido) {
+        this.vencido = vencido;
+    }
+    public String getAlumno() {
+        return alumno;
+    }
+
+    public void setAlumno(String alumno) {
+        this.alumno = alumno;
+    }
+
+    public String getLibro() {
+        return libro;
+    }
+
+    public void setLibros(String libro) {
+        this.libro = libro;
+    }
+
+    public LocalDate getFechaDePrestamo() {
+        return fechaDePrestamo;
+    }
+
+    public void setFechaDePrestamo(String fechaDePrestamo) {
+        this.fechaDePrestamo = LocalDate.parse(fechaDePrestamo);
+    }
+
+    public LocalDate getFechaDevolucion() {
+        return fechaDevolucion;
+    }
+
+    public void setFechaDevolucion(String fechaDevolucion) {
+        this.fechaDevolucion = LocalDate.parse(fechaDevolucion);
+    }
+
+    public LocalDate getFechaDevuelta() {
+        return fechaDevuelta;
+    }
+
+    public void setFechaDevuelta(String fechaDevuelta) {
+        this.fechaDevuelta = LocalDate.parse(fechaDevuelta);
+    }
+    public int getId(){
+        return this.id;
+    }
+    public void setId(int id){
+        this.id = id;
+    }
+    public String verificarVencimiento(){
+        if(fechaDevuelta != null){
+            if(fechaDevuelta.isAfter(fechaDevolucion)){
+                setVencido(true);
+                return "Si";
+        }
+            else if(fechaDePrestamo.isAfter(fechaDevolucion)){
+                setVencido(true);
+                return"Si";
+                
+            }
+        
+    }else{
+        return "No";
+ }
+        return null;
+}
+}
+
+

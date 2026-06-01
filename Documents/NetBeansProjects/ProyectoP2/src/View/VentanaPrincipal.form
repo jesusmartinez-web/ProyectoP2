@@ -159,12 +159,8 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Alumnos"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
-                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAmarilloAlPasar1ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="View.BotonAmarilloAlPasar" name="botonAmarilloAlPasar2">
               <Properties>
@@ -172,12 +168,8 @@
                   <Color blue="0" green="66" red="cc" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Libros"/>
-                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAmarilloAlPasar2ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="View.BotonAmarilloAlPasar" name="botonAmarilloAlPasar3">
               <Properties>
@@ -186,11 +178,10 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Salir"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
-                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAmarilloAlPasar3ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAmarilloAlPasar3ActionPerformed,botonSalir"/>
               </Events>
             </Component>
             <Component class="View.BotonAmarilloAlPasar" name="botonAmarilloAlPasar4">
@@ -200,7 +191,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Prestamos"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
-                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
               </Properties>
             </Component>

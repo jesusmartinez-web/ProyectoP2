@@ -1,0 +1,12 @@
+# Carpetas de compilación y temporales
+build/
+dist/
+nbproject/private/
+
+# Archivos de configuración local del usuario
+nbworkspace.xml
+.nb-gradle/
+
+# Si usas Maven o Gradle (por si acaso)
+target/
+.gradle/

@@ -79,7 +79,8 @@ public class Menus {
     }
 
     public static void pedirLibrosPrestamo(String menuSeleccionado) {
-        System.out.println("Ingrese los titulos de los libros para el " + menuSeleccionado);
+        System.out.println("Ingrese los títulos de los libros para el " + menuSeleccionado);
+        System.out.println("Escriba el título y presione Enter. Cuando termine, escriba 'fin'.");
     }
 
     public static void pedirFechaPrestamo(String menuSeleccionado) {

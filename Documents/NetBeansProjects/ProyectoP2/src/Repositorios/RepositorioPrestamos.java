@@ -27,8 +27,15 @@ public class RepositorioPrestamos implements RepositorioBase<Prestamo> {
         System.out.println("---------------------------------------------------------------------------------------------");
         
         for (Prestamo prestamo : prestamos.values()) {
- 
-            System.out.printf("%-20s | %-25s | %-15s |%-10s |%-25d %n", prestamo.getAlumno(), prestamo.getLibro(), prestamo.getFechaDePrestamo(),prestamo.verificarVencimiento(),prestamo.getId());
+            // Unimos la lista de libros
+            String librosUnidos = String.join(", ", prestamo.getLibros()); 
+            
+            System.out.printf("%-20s | %-25s | %-15s |%-10s |%-25d %n", 
+                prestamo.getAlumno(), 
+                librosUnidos, 
+                prestamo.getFechaDePrestamo(),
+                prestamo.verificarVencimiento(),
+                prestamo.getId());
         }
     }
 
@@ -43,10 +50,15 @@ public class RepositorioPrestamos implements RepositorioBase<Prestamo> {
         System.out.println("-------------------------------------------------------------------------------");
     
         for (Prestamo prestamo : prestamos.values()) {
-            prestamo.verificarVencimiento(); // Refrescamos el estado por si acaso
+            prestamo.verificarVencimiento(); 
             if (prestamo.isVencido()) {
+                String librosUnidos = String.join(", ", prestamo.getLibros());
+                
                 System.out.printf("%-20s | %-25s | %-15s |%-10d %n", 
-                    prestamo.getAlumno(), prestamo.getLibro(), prestamo.getFechaDevolucion(), prestamo.getId());
+                    prestamo.getAlumno(), 
+                    librosUnidos,
+                    prestamo.getFechaDevolucion(), 
+                    prestamo.getId());
             }
         }
     }

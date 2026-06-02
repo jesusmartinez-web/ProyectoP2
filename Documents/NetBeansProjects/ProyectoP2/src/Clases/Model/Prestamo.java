@@ -1,11 +1,13 @@
 package Clases.Model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Prestamo {
     
     private String alumno;
-    private String libro;
+    private List<String> libros = new ArrayList<>();
     private LocalDate fechaDePrestamo;
     private LocalDate fechaDevolucion;
     private LocalDate fechaDevuelta;
@@ -27,12 +29,16 @@ public class Prestamo {
         this.alumno = alumno;
     }
 
-    public String getLibro() {
-        return libro;
+    public List<String> getLibros() {
+        return libros;
     }
 
-    public void setLibros(String libro) {
-        this.libro = libro;
+    public void setLibros(List<String> libros) {
+        this.libros = libros;
+    }
+    
+    public void agregarLibro(String Libro){
+        this.libros.add(Libro);
     }
 
     public LocalDate getFechaDePrestamo() {

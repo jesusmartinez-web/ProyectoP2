@@ -125,9 +125,19 @@ public class ControladorRepositorio {
                 prestamo.setAlumno(aCambiar);
                 break;
             case 2:
-                System.out.println("Cambiaras los libros actuales por: ");
-                aCambiar = sc.nextLine();
-                prestamo.setLibros(aCambiar);
+                System.out.println("Cambiando la lista de libros actuales.");
+                System.out.println("Ingrese los nuevos libros uno por uno (escriba 'fin' para terminar): ");
+                
+                prestamo.getLibros().clear(); 
+                
+                while(true) {
+                    aCambiar = sc.nextLine();
+                    if(aCambiar.equalsIgnoreCase("fin")) {
+                        break; 
+                    }
+                    prestamo.agregarLibro(aCambiar);
+                    System.out.println("Libro agregado a la modificación. Ingrese otro o escriba 'fin':");
+                }
                 break;
             case 3:
                 System.out.println("Cambiaras "+prestamo.getFechaDePrestamo()+" por: ");

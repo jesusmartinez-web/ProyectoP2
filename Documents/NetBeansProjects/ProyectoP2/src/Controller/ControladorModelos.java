@@ -59,8 +59,14 @@ public class ControladorModelos {
                 aCargar = sc.nextLine();
                 prestamo.setAlumno(aCargar);
                 Menus.pedirLibrosPrestamo(menuSeleccionado);
-                aCargar = sc.nextLine();
-                prestamo.setLibros(aCargar);
+                while(true) {
+                    aCargar = sc.nextLine();
+                    if(aCargar.equalsIgnoreCase("fin")) {
+                        break;
+                    }
+                    prestamo.agregarLibro(aCargar);
+                    System.out.println("Libro agregado. Ingrese otro o escriba 'fin':");
+                }
                 Menus.pedirFechaPrestamo(menuSeleccionado);
                 aCargar = sc.nextLine();
                 prestamo.setFechaDePrestamo(aCargar);

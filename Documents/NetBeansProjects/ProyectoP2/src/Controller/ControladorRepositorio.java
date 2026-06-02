@@ -32,6 +32,7 @@ public class ControladorRepositorio {
         System.out.println("5- Fecha de Nacimiento");
         System.out.println("6- Facultad Perteneciente");
         seleccion = sc.nextInt();
+        sc.nextLine();
         switch(seleccion){
             case 1:
                 System.out.println("Cambiaras "+alumno.getNombreCompleto()+" por: ");
@@ -78,6 +79,7 @@ public class ControladorRepositorio {
         System.out.println("3- Año de Publicación");
         System.out.println("4- Autor");
         seleccion = sc.nextInt();
+        sc.nextLine();
         switch(seleccion){
             case 1:
                 System.out.println("Cambiaras "+libro.getTitulo()+" por: ");
@@ -115,6 +117,7 @@ public class ControladorRepositorio {
         System.out.println("4- Fecha de Devolución Pactada");
         System.out.println("5- Fecha Devuelta");
         seleccion = sc.nextInt();
+        sc.nextLine();
         switch(seleccion){
             case 1:
                 System.out.println("Cambiaras "+prestamo.getAlumno()+" por: ");

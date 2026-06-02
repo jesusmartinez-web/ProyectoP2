@@ -18,6 +18,7 @@ public class ControladorMenu {
     public static String controlMenuPrincipal(){ 
         Menus.mostrarMenuPrincipal();
         opcion = sc.nextInt();
+        sc.nextLine();
             switch(opcion){
                 case 1: return "Libro";
                 case 2: return "Alumno";
@@ -35,6 +36,7 @@ public class ControladorMenu {
             menuSeleccionado=menu;
             Menus.mostrarSubMenu(menu);
             opcion = sc.nextInt();
+            sc.nextLine();
         }
     }
     
@@ -50,6 +52,7 @@ public class ControladorMenu {
             case 2: {
                 Menus.seleccionarModificarOBorrar(menuSeleccionado);
                 int aux = sc.nextInt();
+                sc.nextLine();
                 switch(aux){
                     case 1:{
                         switch(menuSeleccionado){
@@ -68,16 +71,13 @@ public class ControladorMenu {
                             case "Prestamo":{
                                 Menus.pedirId();
                                 int id = sc.nextInt();
+                                sc.nextLine();
                                 ControladorRepositorio.editarPrestamo(id);
                                 break;
                             }
                                     
                         }
-                        Menus.pedirDocumento(menuSeleccionado);
-                        String cedula = sc.nextLine();
-                        ControladorRepositorio.editarAlumno(cedula);
                         break;
-                        
                     }
                     case 2:{
                         ControladorRepositorio.borrarTodo(menuSeleccionado);
@@ -85,13 +85,11 @@ public class ControladorMenu {
                         break;
                     }
                     
-                    
-                    
                     default: Menus.opcionInvalida();
-                    
-           
                 }
-            }
+                break;
+                }
+            
             case 3:{
                 
                 switch(menuSeleccionado){
@@ -150,12 +148,12 @@ public class ControladorMenu {
                     } else {
                         System.out.println("Error: No se encontró ningún préstamo con ese ID.");
                     }
-                    break;
                 } else {
-                    controlSubmenus(menuSeleccionado);
+                    System.out.println("Regresando al menú principal...");
                 }
                 break;   
             }
+            
             case 6:{
                 if(menuSeleccionado.equals("Prestamo")){
                     ControladorRepositorio.repositorioPrestamos.informeDeVencidos();

@@ -1,5 +1,6 @@
 package Controller;
 
+import Clases.Model.*;
 import Repositorios.RepositorioAlumno;
 import Repositorios.RepositorioLibros;
 import Repositorios.RepositorioPrestamos;
@@ -135,14 +136,35 @@ public class ControladorMenu {
                 if(menuSeleccionado.equals("Prestamo")){
                     Menus.pedirId();
                     int auxId = sc.nextInt();
-                    ControladorRepositorio.repositorioPrestamos.borrar(RepositorioPrestamos.prestamos.get(auxId));
+                    sc.nextLine(); // Consumir el 'Enter' que queda en el aire por el nextInt()
+        
+                    // Buscar el préstamo
+                    Prestamo p = RepositorioPrestamos.prestamos.get(auxId);
+        
+                    if(p != null) {
+                        Menus.pedirFechaDevuelta(menuSeleccionado);
+                        String fecha = sc.nextLine();
+                        p.setFechaDevuelta(fecha);
+                        p.verificarVencimiento(); // Reevaluamos si lo entregó tarde
+                        System.out.println("¡Préstamo devuelto correctamente!");
+                    } else {
+                        System.out.println("Error: No se encontró ningún préstamo con ese ID.");
+                    }
                     break;
-                }else
+                } else {
                     controlSubmenus(menuSeleccionado);
-            break;    
-            }   
+                }
+                break;   
+            }
+            case 6:{
+                if(menuSeleccionado.equals("Prestamo")){
+                    ControladorRepositorio.repositorioPrestamos.informeDeVencidos();
+                }
+                break;
+            }
+        }
     }
-    }
+    
     public void ejecutar(){
                 
         do{

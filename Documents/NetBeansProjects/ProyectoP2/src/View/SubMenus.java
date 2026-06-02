@@ -112,19 +112,10 @@ public class SubMenus extends javax.swing.JFrame {
 
     private void botonAmarilloAlPasar6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAmarilloAlPasar6ActionPerformed
         javax.swing.JPanel contenedorPadre = (javax.swing.JPanel) this.Menus.getParent();
-
+        
         if (contenedorPadre != null) {
-            contenedorPadre.removeAll();
-
-            VentanaPrincipal ventanaAnterior = new VentanaPrincipal();
-            javax.swing.JPanel contenedor = (javax.swing.JPanel) ventanaAnterior.getContentPane().getComponent(0);
-            javax.swing.JPanel pIzquierda = (javax.swing.JPanel) contenedor.getComponent(1);
-            javax.swing.JPanel menuOriginal = (javax.swing.JPanel) pIzquierda.getComponent(0);
-
-            contenedorPadre.add(menuOriginal);
-
-            contenedorPadre.revalidate();
-            contenedorPadre.repaint();
+            java.awt.CardLayout layout = (java.awt.CardLayout) contenedorPadre.getLayout();
+            layout.show(contenedorPadre, "card2"); 
         }
     }//GEN-LAST:event_botonAmarilloAlPasar6ActionPerformed
 

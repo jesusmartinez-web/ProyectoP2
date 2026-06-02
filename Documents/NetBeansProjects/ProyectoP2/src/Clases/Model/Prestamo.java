@@ -64,23 +64,28 @@ public class Prestamo {
     public void setId(int id){
         this.id = id;
     }
-    public String verificarVencimiento(){
-        if(fechaDevuelta != null){
-            if(fechaDevuelta.isAfter(fechaDevolucion)){
+    
+    public String verificarVencimiento() {
+        if (fechaDevuelta != null) {
+        // Si ya se devolvió, miramos si se devolvió tarde
+            if (fechaDevuelta.isAfter(fechaDevolucion)) {
                 setVencido(true);
                 return "Si";
-        }
-            else if(fechaDePrestamo.isAfter(fechaDevolucion)){
-                setVencido(true);
-                return"Si";
-                
+            } else {
+                setVencido(false);
+                return "No";
             }
-        
-    }else{
-        return "No";
- }
-        return null;
-}
+        } else {
+            // Si NO se ha devolvido aún, comparamos la fecha de devolución con el día de HOY
+            if (LocalDate.now().isAfter(fechaDevolucion)) {
+                setVencido(true);
+                return "Si";
+            } else {
+                setVencido(false);
+                return "No";
+            }
+        }
+    }
 }
 
 

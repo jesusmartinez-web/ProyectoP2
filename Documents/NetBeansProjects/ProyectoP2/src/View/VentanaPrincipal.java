@@ -96,7 +96,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonAmarilloAlPasar5.setText("Prestamos");
         botonAmarilloAlPasar5.setToolTipText("");
         botonAmarilloAlPasar5.setContentAreaFilled(false);
-        botonAmarilloAlPasar5.addActionListener(this::cambiarASubmenu);
+        botonAmarilloAlPasar5.addActionListener(this::cambiarMenu);
 
         botonAmarilloAlPasar6.setBackground(new java.awt.Color(204, 102, 0));
         botonAmarilloAlPasar6.setText("Salir");
@@ -113,7 +113,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonAmarilloAlPasar8.setText("Alumnos");
         botonAmarilloAlPasar8.setToolTipText("");
         botonAmarilloAlPasar8.setContentAreaFilled(false);
-        botonAmarilloAlPasar8.addActionListener(this::cambiarASubmenu);
+        botonAmarilloAlPasar8.addActionListener(this::cambiarMenu);
 
         javax.swing.GroupLayout MenusLayout = new javax.swing.GroupLayout(Menus);
         Menus.setLayout(MenusLayout);
@@ -131,7 +131,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addGroup(MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(botonAmarilloAlPasar8, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botonAmarilloAlPasar7, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         MenusLayout.setVerticalGroup(
             MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,7 +142,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(botonAmarilloAlPasar8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(botonAmarilloAlPasar5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                 .addComponent(botonAmarilloAlPasar6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
@@ -176,21 +176,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_botonAmarilloAlPasar6ActionPerformed
 
-    private void cambiarASubmenu(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarASubmenu
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cambiarASubmenu
-
     private void cambiarMenu(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarMenu
-        // TODO add your handling code here:
-        this.panelIzquierda.removeAll();
-
+                            
         SubMenus vistaSub = new SubMenus();
-        this.panelIzquierda.add(vistaSub.getContentPane().getComponent(0));
-
-        this.panelIzquierda.revalidate();
-        this.panelIzquierda.repaint();
-
         
+        this.panelIzquierda.add(vistaSub.getContentPane().getComponent(0), "cardSubmenu");
+        
+        java.awt.CardLayout layout = (java.awt.CardLayout) this.panelIzquierda.getLayout();
+        layout.show(this.panelIzquierda, "cardSubmenu");
         
     }//GEN-LAST:event_cambiarMenu
     

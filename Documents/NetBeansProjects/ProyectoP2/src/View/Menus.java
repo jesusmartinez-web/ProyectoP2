@@ -19,9 +19,10 @@ public class Menus {
         System.out.println("4- Listar "+menuSeleccionado+"s");
         if("Prestamo".equals(menuSeleccionado)){
             System.out.println("5- Devolver prestamo");
-            System.out.println("6- Salir");
+            System.out.println("6- Informe de Prestamos Vencidos");
+            System.out.println("7- Salir");
         }else{
-        System.out.println("5- Salir");
+            System.out.println("5- Salir");
         }
         System.out.println("Ingrese su opcion: ");
         

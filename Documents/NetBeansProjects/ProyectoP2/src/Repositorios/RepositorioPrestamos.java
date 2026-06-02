@@ -36,4 +36,18 @@ public class RepositorioPrestamos implements RepositorioBase<Prestamo> {
     public void borrar(Prestamo aBorrar) {
         prestamos.remove(aBorrar.getId());
     }
+    
+    public void informeDeVencidos() {
+        System.out.println("\n--- INFORME DE PRÉSTAMOS VENCIDOS ---");
+        System.out.printf("%-20s | %-25s | %-15s |%-10s %n", "ALUMNO", "LIBROS", "FECHA PACTADA", "ID");
+        System.out.println("-------------------------------------------------------------------------------");
+    
+        for (Prestamo prestamo : prestamos.values()) {
+            prestamo.verificarVencimiento(); // Refrescamos el estado por si acaso
+            if (prestamo.isVencido()) {
+                System.out.printf("%-20s | %-25s | %-15s |%-10d %n", 
+                    prestamo.getAlumno(), prestamo.getLibro(), prestamo.getFechaDevolucion(), prestamo.getId());
+            }
+        }
+    }
 }

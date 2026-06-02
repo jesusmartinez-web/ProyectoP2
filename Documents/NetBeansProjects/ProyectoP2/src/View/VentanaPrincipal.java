@@ -36,136 +36,140 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jSpinner1 = new javax.swing.JSpinner();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
+        Contenedor = new javax.swing.JPanel();
+        panelArriba = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        botonAmarilloAlPasar1 = new View.BotonAmarilloAlPasar();
-        botonAmarilloAlPasar2 = new View.BotonAmarilloAlPasar();
-        botonAmarilloAlPasar3 = new View.BotonAmarilloAlPasar();
-        botonAmarilloAlPasar4 = new View.BotonAmarilloAlPasar();
-        jPanel7 = new javax.swing.JPanel();
+        panelIzquierda = new javax.swing.JPanel();
+        Menus = new javax.swing.JPanel();
+        botonAmarilloAlPasar5 = new View.BotonAmarilloAlPasar();
+        botonAmarilloAlPasar6 = new View.BotonAmarilloAlPasar();
+        botonAmarilloAlPasar7 = new View.BotonAmarilloAlPasar();
+        botonAmarilloAlPasar8 = new View.BotonAmarilloAlPasar();
+        Centro = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(255, 0, 0));
-        jPanel2.setLayout(new java.awt.BorderLayout());
+        Contenedor.setBackground(new java.awt.Color(255, 0, 0));
+        Contenedor.setLayout(new java.awt.BorderLayout());
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 153));
-        jPanel5.setPreferredSize(new java.awt.Dimension(552, 150));
+        panelArriba.setBackground(new java.awt.Color(255, 255, 153));
+        panelArriba.setPreferredSize(new java.awt.Dimension(552, 150));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Adobe Express - file.jpg"))); // NOI18N
         jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(10, 10, 10, 10, new java.awt.Color(204, 102, 0)));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/criuni-91e899b7b3ba52c25a216d214734fcbd20c8538834e691a6a70ff61d65f25f71 (1).png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelArribaLayout = new javax.swing.GroupLayout(panelArriba);
+        panelArriba.setLayout(panelArribaLayout);
+        panelArribaLayout.setHorizontalGroup(
+            panelArribaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelArribaLayout.createSequentialGroup()
                 .addGap(140, 140, 140)
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addGap(20, 20, 20))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+        panelArribaLayout.setVerticalGroup(
+            panelArribaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelArribaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(panelArribaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18))
         );
 
-        jPanel2.add(jPanel5, java.awt.BorderLayout.PAGE_START);
+        Contenedor.add(panelArriba, java.awt.BorderLayout.PAGE_START);
 
-        jPanel6.setBackground(new java.awt.Color(204, 102, 0));
-        jPanel6.setPreferredSize(new java.awt.Dimension(200, 209));
+        panelIzquierda.setBackground(new java.awt.Color(204, 102, 0));
+        panelIzquierda.setPreferredSize(new java.awt.Dimension(200, 209));
+        panelIzquierda.setLayout(new java.awt.CardLayout());
 
-        botonAmarilloAlPasar1.setBackground(new java.awt.Color(204, 102, 0));
-        botonAmarilloAlPasar1.setText("Alumnos");
-        botonAmarilloAlPasar1.setToolTipText("");
-        botonAmarilloAlPasar1.setContentAreaFilled(false);
+        Menus.setOpaque(false);
 
-        botonAmarilloAlPasar2.setBackground(new java.awt.Color(204, 102, 0));
-        botonAmarilloAlPasar2.setText("Libros");
-        botonAmarilloAlPasar2.setContentAreaFilled(false);
+        botonAmarilloAlPasar5.setBackground(new java.awt.Color(204, 102, 0));
+        botonAmarilloAlPasar5.setText("Prestamos");
+        botonAmarilloAlPasar5.setToolTipText("");
+        botonAmarilloAlPasar5.setContentAreaFilled(false);
 
-        botonAmarilloAlPasar3.setBackground(new java.awt.Color(204, 102, 0));
-        botonAmarilloAlPasar3.setText("Salir");
-        botonAmarilloAlPasar3.setToolTipText("");
-        botonAmarilloAlPasar3.setContentAreaFilled(false);
-        botonAmarilloAlPasar3.addActionListener((evt) -> {
-            botonAmarilloAlPasar3ActionPerformed(evt);
-            botonSalir(evt);
-        });
+        botonAmarilloAlPasar6.setBackground(new java.awt.Color(204, 102, 0));
+        botonAmarilloAlPasar6.setText("Salir");
+        botonAmarilloAlPasar6.setToolTipText("");
+        botonAmarilloAlPasar6.setContentAreaFilled(false);
+        botonAmarilloAlPasar6.addActionListener(this::botonAmarilloAlPasar6ActionPerformed);
 
-        botonAmarilloAlPasar4.setBackground(new java.awt.Color(204, 102, 0));
-        botonAmarilloAlPasar4.setText("Prestamos");
-        botonAmarilloAlPasar4.setToolTipText("");
-        botonAmarilloAlPasar4.setContentAreaFilled(false);
+        botonAmarilloAlPasar7.setBackground(new java.awt.Color(204, 102, 0));
+        botonAmarilloAlPasar7.setText("Libros");
+        botonAmarilloAlPasar7.setContentAreaFilled(false);
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(botonAmarilloAlPasar3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonAmarilloAlPasar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonAmarilloAlPasar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonAmarilloAlPasar4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(62, Short.MAX_VALUE))
+        botonAmarilloAlPasar8.setBackground(new java.awt.Color(204, 102, 0));
+        botonAmarilloAlPasar8.setText("Alumnos");
+        botonAmarilloAlPasar8.setToolTipText("");
+        botonAmarilloAlPasar8.setContentAreaFilled(false);
+
+        javax.swing.GroupLayout MenusLayout = new javax.swing.GroupLayout(Menus);
+        Menus.setLayout(MenusLayout);
+        MenusLayout.setHorizontalGroup(
+            MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MenusLayout.createSequentialGroup()
+                .addGroup(MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, MenusLayout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addGroup(MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(botonAmarilloAlPasar5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botonAmarilloAlPasar6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(MenusLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(botonAmarilloAlPasar8, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonAmarilloAlPasar7, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(botonAmarilloAlPasar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        MenusLayout.setVerticalGroup(
+            MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MenusLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(botonAmarilloAlPasar7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(botonAmarilloAlPasar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonAmarilloAlPasar8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(botonAmarilloAlPasar4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
-                .addComponent(botonAmarilloAlPasar3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(botonAmarilloAlPasar5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addComponent(botonAmarilloAlPasar6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
 
-        jPanel2.add(jPanel6, java.awt.BorderLayout.LINE_START);
+        panelIzquierda.add(Menus, "card2");
 
-        jPanel7.setBackground(new java.awt.Color(204, 153, 0));
+        Contenedor.add(panelIzquierda, java.awt.BorderLayout.LINE_START);
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        Centro.setBackground(new java.awt.Color(204, 153, 0));
+
+        javax.swing.GroupLayout CentroLayout = new javax.swing.GroupLayout(Centro);
+        Centro.setLayout(CentroLayout);
+        CentroLayout.setHorizontalGroup(
+            CentroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 452, Short.MAX_VALUE)
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        CentroLayout.setVerticalGroup(
+            CentroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 284, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jPanel7, java.awt.BorderLayout.CENTER);
+        Contenedor.add(Centro, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
+        getContentPane().add(Contenedor, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonAmarilloAlPasar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAmarilloAlPasar3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonAmarilloAlPasar3ActionPerformed
-
-    private void botonSalir(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalir
+    private void botonAmarilloAlPasar6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAmarilloAlPasar6ActionPerformed
         // TODO add your handling code here:
         System.exit(0);
-    }//GEN-LAST:event_botonSalir
+    }//GEN-LAST:event_botonAmarilloAlPasar6ActionPerformed
 
     
     
@@ -198,16 +202,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private View.BotonAmarilloAlPasar botonAmarilloAlPasar1;
-    private View.BotonAmarilloAlPasar botonAmarilloAlPasar2;
-    private View.BotonAmarilloAlPasar botonAmarilloAlPasar3;
-    private View.BotonAmarilloAlPasar botonAmarilloAlPasar4;
+    private javax.swing.JPanel Centro;
+    private javax.swing.JPanel Contenedor;
+    private javax.swing.JPanel Menus;
+    private View.BotonAmarilloAlPasar botonAmarilloAlPasar5;
+    private View.BotonAmarilloAlPasar botonAmarilloAlPasar6;
+    private View.BotonAmarilloAlPasar botonAmarilloAlPasar7;
+    private View.BotonAmarilloAlPasar botonAmarilloAlPasar8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JPanel panelArriba;
+    private javax.swing.JPanel panelIzquierda;
     // End of variables declaration//GEN-END:variables
 }

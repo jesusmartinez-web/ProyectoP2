@@ -182,6 +182,9 @@
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                     <Property name="contentAreaFilled" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cambiarASubmenu"/>
+                  </Events>
                 </Component>
                 <Component class="View.BotonAmarilloAlPasar" name="botonAmarilloAlPasar6">
                   <Properties>
@@ -204,6 +207,9 @@
                     <Property name="text" type="java.lang.String" value="Libros"/>
                     <Property name="contentAreaFilled" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cambiarMenu"/>
+                  </Events>
                 </Component>
                 <Component class="View.BotonAmarilloAlPasar" name="botonAmarilloAlPasar8">
                   <Properties>
@@ -214,6 +220,9 @@
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                     <Property name="contentAreaFilled" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cambiarASubmenu"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

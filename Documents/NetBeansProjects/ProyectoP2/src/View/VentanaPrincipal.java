@@ -23,6 +23,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public VentanaPrincipal() {
         initComponents();
         this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+        
+
     }
 
     /**
@@ -94,6 +96,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonAmarilloAlPasar5.setText("Prestamos");
         botonAmarilloAlPasar5.setToolTipText("");
         botonAmarilloAlPasar5.setContentAreaFilled(false);
+        botonAmarilloAlPasar5.addActionListener(this::cambiarASubmenu);
 
         botonAmarilloAlPasar6.setBackground(new java.awt.Color(204, 102, 0));
         botonAmarilloAlPasar6.setText("Salir");
@@ -104,11 +107,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonAmarilloAlPasar7.setBackground(new java.awt.Color(204, 102, 0));
         botonAmarilloAlPasar7.setText("Libros");
         botonAmarilloAlPasar7.setContentAreaFilled(false);
+        botonAmarilloAlPasar7.addActionListener(this::cambiarMenu);
 
         botonAmarilloAlPasar8.setBackground(new java.awt.Color(204, 102, 0));
         botonAmarilloAlPasar8.setText("Alumnos");
         botonAmarilloAlPasar8.setToolTipText("");
         botonAmarilloAlPasar8.setContentAreaFilled(false);
+        botonAmarilloAlPasar8.addActionListener(this::cambiarASubmenu);
 
         javax.swing.GroupLayout MenusLayout = new javax.swing.GroupLayout(Menus);
         Menus.setLayout(MenusLayout);
@@ -171,6 +176,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_botonAmarilloAlPasar6ActionPerformed
 
+    private void cambiarASubmenu(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarASubmenu
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cambiarASubmenu
+
+    private void cambiarMenu(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarMenu
+        // TODO add your handling code here:
+        this.panelIzquierda.removeAll();
+
+        SubMenus vistaSub = new SubMenus();
+        this.panelIzquierda.add(vistaSub.getContentPane().getComponent(0));
+
+        this.panelIzquierda.revalidate();
+        this.panelIzquierda.repaint();
+
+        
+        
+    }//GEN-LAST:event_cambiarMenu
     
     
     

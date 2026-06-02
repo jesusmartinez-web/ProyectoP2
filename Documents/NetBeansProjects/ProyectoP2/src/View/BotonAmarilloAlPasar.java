@@ -27,14 +27,12 @@ public class BotonAmarilloAlPasar extends JButton {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                // Escribe aquí lo que quieres que pasa cuando hacen CLIC (Presionan)
                 
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                // Escribe aquí lo que pasa cuando SUELTAN el clic
-                
+               
             }
         });
     }

@@ -9,15 +9,18 @@ package View;
  * @author ThinkPad
  */
 public class SubMenus extends javax.swing.JFrame {
+    private VentanaPrincipal ventanaPrincipal;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(SubMenus.class.getName());
 
     /**
      * Creates new form SubMenus
      */
-    public SubMenus() {
-        initComponents();
+    public SubMenus(VentanaPrincipal ventanaPrincipal) {
+    initComponents();
+    this.ventanaPrincipal = ventanaPrincipal;
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,6 +55,7 @@ public class SubMenus extends javax.swing.JFrame {
         botonAmarilloAlPasar7.setBackground(new java.awt.Color(204, 102, 0));
         botonAmarilloAlPasar7.setText("Crear");
         botonAmarilloAlPasar7.setContentAreaFilled(false);
+        botonAmarilloAlPasar7.addActionListener(this::botonAmarilloAlPasar7ActionPerformed);
 
         botonAmarilloAlPasar8.setBackground(new java.awt.Color(204, 102, 0));
         botonAmarilloAlPasar8.setText("Editar");
@@ -64,47 +68,39 @@ public class SubMenus extends javax.swing.JFrame {
         MenusLayout.setHorizontalGroup(
             MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenusLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(59, 59, 59)
                 .addGroup(MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(botonAmarilloAlPasar5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonAmarilloAlPasar8, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-                    .addComponent(botonAmarilloAlPasar7, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-                    .addComponent(botonAmarilloAlPasar6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(59, Short.MAX_VALUE))
+                    .addComponent(botonAmarilloAlPasar8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonAmarilloAlPasar7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonAmarilloAlPasar6, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         MenusLayout.setVerticalGroup(
             MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenusLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(22, 22, 22)
                 .addComponent(botonAmarilloAlPasar7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(botonAmarilloAlPasar8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(botonAmarilloAlPasar5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
                 .addComponent(botonAmarilloAlPasar6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addGap(24, 24, 24))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 106, Short.MAX_VALUE)
-                    .addComponent(Menus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 107, Short.MAX_VALUE)))
+            .addComponent(Menus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(Menus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(Menus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -122,6 +118,11 @@ public class SubMenus extends javax.swing.JFrame {
     private void botonAmarilloAlPasar8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAmarilloAlPasar8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botonAmarilloAlPasar8ActionPerformed
+
+    private void botonAmarilloAlPasar7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAmarilloAlPasar7ActionPerformed
+        // TODO add your handling code here:
+        ventanaPrincipal.mostrarEnCentro(new CargarAlumnos());
+    }//GEN-LAST:event_botonAmarilloAlPasar7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,8 +145,7 @@ public class SubMenus extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new SubMenus().setVisible(true));
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

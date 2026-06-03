@@ -31,24 +31,11 @@ public class EditarAlumno extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         campoBusqueda = new javax.swing.JTextField();
         botonEditar = new javax.swing.JButton();
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaAlumno1 = new View.TablaAlumno();
 
         jLabel1.setText("Ingrese el nr de Documento");
 
@@ -57,11 +44,12 @@ public class EditarAlumno extends javax.swing.JPanel {
         botonEditar.setText("Editar");
         botonEditar.addActionListener(this::botonEditarActionPerformed);
 
+        jScrollPane2.setViewportView(tablaAlumno1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1035, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -70,13 +58,16 @@ public class EditarAlumno extends javax.swing.JPanel {
                         .addGap(51, 51, 51)
                         .addComponent(botonEditar))
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(594, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane2)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -88,8 +79,7 @@ public class EditarAlumno extends javax.swing.JPanel {
     
     
     void cargarTabla() {
-        javax.swing.table.DefaultTableModel modelo =
-            (javax.swing.table.DefaultTableModel) jTable1.getModel();
+        javax.swing.table.DefaultTableModel modelo = (javax.swing.table.DefaultTableModel) tablaAlumno1.getTabla().getModel();
         modelo.setRowCount(0);
         for (Clases.Model.Alumno a : Controller.ControladorView.obtenerAlumnos()) {
             modelo.addRow(new Object[]{
@@ -162,7 +152,7 @@ public class EditarAlumno extends javax.swing.JPanel {
             campoFacultad.getText()
         );
 
-        jScrollPane1.setVisible(true);
+        jScrollPane2.setVisible(true);
         panelEdicion.setVisible(false);
         cargarTabla();
         revalidate();
@@ -182,8 +172,8 @@ public class EditarAlumno extends javax.swing.JPanel {
     private javax.swing.JButton botonEditar;
     private javax.swing.JTextField campoBusqueda;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private View.TablaAlumno tablaAlumno1;
     // End of variables declaration//GEN-END:variables
 
 

@@ -16,11 +16,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
-          <Component id="tablaLibro1" alignment="0" pref="1141" max="32767" attributes="0"/>
+          <Component id="tablaLibro1" alignment="0" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -30,8 +26,9 @@
                   <Component id="fechaDeEntrega" alignment="0" min="-2" pref="281" max="-2" attributes="0"/>
                   <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="fechaPrestamo1" alignment="0" min="-2" pref="281" max="-2" attributes="0"/>
+                  <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="755" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -61,7 +58,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Dime el  ID  o los ID del libro o los libros a prestar, separados por coma"/>
+        <Property name="text" type="java.lang.String" value="Dime el  ID  o los IDs del libro o los libros a prestar, separados por coma"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="nroDeDoc">

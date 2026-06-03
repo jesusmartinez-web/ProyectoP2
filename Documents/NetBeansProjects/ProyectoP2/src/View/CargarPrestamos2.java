@@ -35,7 +35,7 @@ public class CargarPrestamos2 extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         fechaPrestamo1 = new javax.swing.JTextField();
 
-        jLabel5.setText("Dime el  ID  o los ID del libro o los libros a prestar, separados por coma");
+        jLabel5.setText("Dime el  ID  o los IDs del libro o los libros a prestar, separados por coma");
 
         botonSgte.setText("Siguiente");
 
@@ -47,10 +47,7 @@ public class CargarPrestamos2 extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel5)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(tablaLibro1, javax.swing.GroupLayout.DEFAULT_SIZE, 1141, Short.MAX_VALUE)
+            .addComponent(tablaLibro1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -59,8 +56,9 @@ public class CargarPrestamos2 extends javax.swing.JPanel {
                     .addComponent(jLabel6)
                     .addComponent(fechaDeEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(fechaPrestamo1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(fechaPrestamo1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addContainerGap(755, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

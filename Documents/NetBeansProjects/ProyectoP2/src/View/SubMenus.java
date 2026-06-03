@@ -263,12 +263,33 @@ public class SubMenus extends javax.swing.JFrame {
                     }
                 });
 
-                javax.swing.JPanel panelFiltro = new javax.swing.JPanel(new java.awt.BorderLayout());
+                // Comparator para fecha de préstamo (col 3) y fecha de devolución (col 4)
+                sorter.setComparator(3, java.util.Comparator.comparing(Object::toString));
+                sorter.setComparator(4, java.util.Comparator.comparing(Object::toString));
+
+                // Botones de ordenamiento por fecha
+                javax.swing.JButton botonFechaPrestamo   = new javax.swing.JButton("Ordenar por F. Préstamo");
+                javax.swing.JButton botonFechaDevolucion = new javax.swing.JButton("Ordenar por F. Devolución");
+                botonFechaPrestamo.addActionListener(e -> sorter.setSortKeys(
+                    java.util.List.of(new javax.swing.RowSorter.SortKey(3, javax.swing.SortOrder.ASCENDING))));
+                botonFechaDevolucion.addActionListener(e -> sorter.setSortKeys(
+                    java.util.List.of(new javax.swing.RowSorter.SortKey(4, javax.swing.SortOrder.ASCENDING))));
+
+                javax.swing.JPanel panelBotones = new javax.swing.JPanel(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
+                panelBotones.add(botonFechaPrestamo);
+                panelBotones.add(botonFechaDevolucion);
+
                 javax.swing.JPanel barraFiltro = new javax.swing.JPanel(new java.awt.BorderLayout(5, 0));
                 barraFiltro.add(labelFiltro, java.awt.BorderLayout.WEST);
                 barraFiltro.add(campoBusqueda, java.awt.BorderLayout.CENTER);
                 barraFiltro.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
-                panelFiltro.add(barraFiltro, java.awt.BorderLayout.NORTH);
+
+                javax.swing.JPanel panelSuperior = new javax.swing.JPanel(new java.awt.BorderLayout());
+                panelSuperior.add(barraFiltro, java.awt.BorderLayout.NORTH);
+                panelSuperior.add(panelBotones, java.awt.BorderLayout.SOUTH);
+
+                javax.swing.JPanel panelFiltro = new javax.swing.JPanel(new java.awt.BorderLayout());
+                panelFiltro.add(panelSuperior, java.awt.BorderLayout.NORTH);
                 panelFiltro.add(tablaPrestamo, java.awt.BorderLayout.CENTER);
                 ventanaPrincipal.mostrarEnCentro(panelFiltro);
             }

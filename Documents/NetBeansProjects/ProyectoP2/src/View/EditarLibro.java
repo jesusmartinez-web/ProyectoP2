@@ -9,8 +9,8 @@ public class EditarLibro extends javax.swing.JPanel {
     public EditarLibro(VentanaPrincipal ventanaPrincipal) {
         initComponents();
         this.ventanaPrincipal = ventanaPrincipal;
-        campoBusqueda.setText("");  // limpia el texto "jTextField1" que puso NetBeans
-        botonEditar.addActionListener(e -> botonEditarAction()); // conecta el botón
+        campoBusqueda.setText("");  
+        botonEditar.addActionListener(e -> botonEditarAction()); 
         cargarTabla();
     }
 
@@ -35,7 +35,7 @@ public class EditarLibro extends javax.swing.JPanel {
                 return;
             }
             Clases.Model.Libro libro = Controller.ControladorView.buscarLibro(idStr);
-            if (libro == null) return; // el controlador ya mostró el error
+            if (libro == null) return; 
 
             CargarLibros formulario = new CargarLibros();
             formulario.precargarDatos(libro, this);

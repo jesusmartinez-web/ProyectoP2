@@ -45,8 +45,8 @@ public class CargarPrestamos extends javax.swing.JPanel {
                 String docAlumno = nroDeDoc.getText().trim();
                 Clases.Model.Alumno alumno = Controller.ControladorView.buscarAlumno(docAlumno);
                 if (alumno == null) {
-                    return; // buscarAlumno ya muestra el JOptionPane
-                }   // Pasar al paso 2 mostrando CargarPrestamos2 con el alumno seleccionado
+                    return; 
+                }
                 VentanaPrincipal principal = (VentanaPrincipal) javax.swing.SwingUtilities.getWindowAncestor(CargarPrestamos.this);
                 if (principal != null) {
                     CargarPrestamos2 paso2 = new CargarPrestamos2();

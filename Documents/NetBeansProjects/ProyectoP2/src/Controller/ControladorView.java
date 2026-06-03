@@ -3,7 +3,6 @@ package Controller;
 import View.VentanaPrincipal;
 import Clases.Model.*;
 import Repositorios.*;
-import java.util.Collection;
 
 public class ControladorView {
 
@@ -16,15 +15,13 @@ public class ControladorView {
 
     // Alumnos
     public static boolean agregarAlumno(String nombreCompleto, String nroDoc, String email, String telf, String fechaNac, String facultad) {
-
-        // El controlador verifica si el documento ya existe
         if (RepositorioAlumno.alumnos.containsKey(nroDoc)) {
             javax.swing.JOptionPane.showMessageDialog(null,
                 "Ya existe un alumno con el documento: " + nroDoc +
                 "\nCambiá el número de documento para continuar.",
                 "Documento duplicado",
                 javax.swing.JOptionPane.WARNING_MESSAGE);
-            return false; // Le avisa a la View que falló
+            return false;
         }
 
         Alumno alumno = new Alumno();
@@ -37,70 +34,13 @@ public class ControladorView {
 
         ControladorRepositorio.repositorioAlumnos.anhadir(alumno);
         javax.swing.JOptionPane.showMessageDialog(null, "Alumno creado correctamente!");
-        return true; // Le avisa a la View que funcionó
+        return true;
     }
-    
-    public static void agregarLibro(String titulo, String editorial, String autor, String anho) {
-    Libro libro = new Libro();
-    libro.setTitulo(titulo);
-    libro.setEditorial(editorial);
-    libro.setAutor(autor);
-    libro.setAnhoDePublicacion(anho);
-    ControladorRepositorio.repositorioLibros.anhadir(libro);
-    javax.swing.JOptionPane.showMessageDialog(null, "Libro creado correctamente!");
-}
-    public static void agregarPrestamo(String alumno, String librosTexto, String fechaPrestamo, String fechaDevolucion) {
-        Prestamo prestamo = new Prestamo();
-        prestamo.setAlumno(alumno);
-        java.util.List<String> listaLibros = new java.util.ArrayList<>();
-        for (String libro : librosTexto.split(",")) {
-            String titulo = libro.trim();
-            prestamo.agregarLibro(titulo);
-            listaLibros.add(titulo);
-        }
-        prestamo.setFechaDePrestamo(fechaPrestamo);
-        prestamo.setFechaDevolucion(fechaDevolucion);
-        ControladorRepositorio.repositorioPrestamos.anhadir(prestamo);
-        ControladorView.marcarLibrosNoDisponibles(listaLibros);
-        javax.swing.JOptionPane.showMessageDialog(null, "Préstamo creado correctamente!");
-    }
-    
-    
-    public static Collection<Alumno> obtenerAlumnos() {
+
+    public static java.util.Collection<Alumno> obtenerAlumnos() {
         return RepositorioAlumno.alumnos.values();
     }
 
-    public static void borrarAlumno(Alumno a) {
-        ControladorRepositorio.repositorioAlumnos.borrar(a);
-    }
-
-    // Libros 
-    public static void agregarLibro(Libro l) {
-        ControladorRepositorio.repositorioLibros.anhadir(l);
-    }
-
-    public static Collection<Libro> obtenerLibros() {
-        return RepositorioLibros.libros.values();
-    }
-
-    public static void borrarLibro(Libro l) {
-        ControladorRepositorio.repositorioLibros.borrar(l);
-    }
-
-    // Prestamos 
-    public static void agregarPrestamo(Prestamo p) {
-        ControladorRepositorio.repositorioPrestamos.anhadir(p);
-    }
-
-    public static Collection<Prestamo> obtenerPrestamos() {
-        return RepositorioPrestamos.prestamos.values();
-    }
-
-    public static void borrarPrestamo(Prestamo p) {
-        ControladorRepositorio.repositorioPrestamos.borrar(p);
-    }
-    
-    // Reemplazá el método buscarAlumno que ya tenés:
     public static Clases.Model.Alumno buscarAlumno(String nroDoc) {
         Clases.Model.Alumno alumno = RepositorioAlumno.alumnos.get(nroDoc);
         if (alumno == null) {
@@ -109,13 +49,11 @@ public class ControladorView {
                 "Alumno no encontrado",
                 javax.swing.JOptionPane.WARNING_MESSAGE);
         }
-        return alumno; // devuelve null si no existe, la View solo pregunta si es null
+        return alumno;
     }
-
 
     public static boolean editarAlumno(String docOriginal, String nroDocNuevo, String nombre, String email,
                                        String telf, String fechaNac, String facultad) {
-        
         Clases.Model.Alumno alumno = RepositorioAlumno.alumnos.get(docOriginal);
         if (alumno == null) {
             javax.swing.JOptionPane.showMessageDialog(null, "No se encontró el alumno original.");
@@ -147,7 +85,22 @@ public class ControladorView {
         javax.swing.JOptionPane.showMessageDialog(null, "Alumno actualizado correctamente!");
         return true;
     }
-    
+
+    // Libros
+    public static void agregarLibro(String titulo, String editorial, String autor, String anho) {
+        Libro libro = new Libro();
+        libro.setTitulo(titulo);
+        libro.setEditorial(editorial);
+        libro.setAutor(autor);
+        libro.setAnhoDePublicacion(anho);
+        ControladorRepositorio.repositorioLibros.anhadir(libro);
+        javax.swing.JOptionPane.showMessageDialog(null, "Libro creado correctamente!");
+    }
+
+    public static java.util.Collection<Libro> obtenerLibros() {
+        return RepositorioLibros.libros.values();
+    }
+
     public static Clases.Model.Libro buscarLibro(String idStr) {
         try {
             int id = Integer.parseInt(idStr.trim());
@@ -180,9 +133,19 @@ public class ControladorView {
         javax.swing.JOptionPane.showMessageDialog(null, "No se encontró el libro.");
         return false;
     }
-    
+
+    public static java.util.Collection<Clases.Model.Libro> obtenerLibrosDisponibles() {
+        java.util.List<Clases.Model.Libro> disponibles = new java.util.ArrayList<>();
+        for (Clases.Model.Libro libro : RepositorioLibros.libros.values()) {
+            if (libro.isDisponible()) {
+                disponibles.add(libro);
+            }
+        }
+        return disponibles;
+    }
+
     public static void marcarLibrosNoDisponibles(java.util.List<String> titulosLibros) {
-        for (Clases.Model.Libro libro : Repositorios.RepositorioLibros.libros.values()) {
+        for (Clases.Model.Libro libro : RepositorioLibros.libros.values()) {
             if (titulosLibros.contains(libro.getTitulo())) {
                 libro.setDisponible(false);
             }
@@ -190,28 +153,40 @@ public class ControladorView {
     }
 
     public static void liberarLibros(java.util.List<String> titulosLibros) {
-        for (Clases.Model.Libro libro : Repositorios.RepositorioLibros.libros.values()) {
+        for (Clases.Model.Libro libro : RepositorioLibros.libros.values()) {
             if (titulosLibros.contains(libro.getTitulo())) {
                 libro.setDisponible(true);
             }
         }
     }
 
-    public static java.util.Collection<Clases.Model.Libro> obtenerLibrosDisponibles() {
-        java.util.List<Clases.Model.Libro> disponibles = new java.util.ArrayList<>();
-        for (Clases.Model.Libro libro : Repositorios.RepositorioLibros.libros.values()) {
-            if (libro.isDisponible()) {
-                disponibles.add(libro);
-            }
+    // Prestamos
+    public static void agregarPrestamo(String alumno, String librosTexto, String fechaPrestamo, String fechaDevolucion) {
+        Prestamo prestamo = new Prestamo();
+        prestamo.setAlumno(alumno);
+        java.util.List<String> listaLibros = new java.util.ArrayList<>();
+        for (String libro : librosTexto.split(",")) {
+            String titulo = libro.trim();
+            prestamo.agregarLibro(titulo);
+            listaLibros.add(titulo);
         }
-        return disponibles;
+        prestamo.setFechaDePrestamo(fechaPrestamo);
+        prestamo.setFechaDevolucion(fechaDevolucion);
+        ControladorRepositorio.repositorioPrestamos.anhadir(prestamo);
+        ControladorView.marcarLibrosNoDisponibles(listaLibros);
+        javax.swing.JOptionPane.showMessageDialog(null, "Préstamo creado correctamente!");
     }
+
+    public static java.util.Collection<Prestamo> obtenerPrestamos() {
+        return RepositorioPrestamos.prestamos.values();
+    }
+
     public static boolean devolverPrestamo(int idPrestamo, String fechaDevuelta) {
-        Clases.Model.Prestamo prestamo = Repositorios.RepositorioPrestamos.prestamos.get(idPrestamo);
+        Clases.Model.Prestamo prestamo = RepositorioPrestamos.prestamos.get(idPrestamo);
         if (prestamo == null) {
             javax.swing.JOptionPane.showMessageDialog(null,
-                    "No existe un préstamo con ID: " + idPrestamo,
-                    "No encontrado", javax.swing.JOptionPane.WARNING_MESSAGE);
+                "No existe un préstamo con ID: " + idPrestamo,
+                "No encontrado", javax.swing.JOptionPane.WARNING_MESSAGE);
             return false;
         }
         prestamo.setFechaDevuelta(fechaDevuelta);

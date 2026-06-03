@@ -78,7 +78,7 @@ public class CargarPrestamos2 extends javax.swing.JPanel {
         javax.swing.table.DefaultTableModel modelo =
             (javax.swing.table.DefaultTableModel) tablaLibro1.getTabla().getModel();
         modelo.setRowCount(0);
-        for (Clases.Model.Libro l : Controller.ControladorView.obtenerLibrosDisponibles()) { // ← cambia esto
+        for (Clases.Model.Libro l : Controller.ControladorView.obtenerLibrosDisponibles()) { 
             modelo.addRow(new Object[]{
                 l.getId(),
                 l.getTitulo(),

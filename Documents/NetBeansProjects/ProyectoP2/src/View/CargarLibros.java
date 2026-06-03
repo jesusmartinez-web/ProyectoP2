@@ -126,8 +126,8 @@ public class CargarLibros extends javax.swing.JPanel {
                     VentanaPrincipal principal = (VentanaPrincipal)
                         javax.swing.SwingUtilities.getWindowAncestor(this);
                     if (principal != null) {
-                        panelOrigen.cargarTabla(); // actualiza la tabla
-                        principal.mostrarEnCentro(panelOrigen); // vuelve a EditarLibro
+                        panelOrigen.cargarTabla(); 
+                        principal.mostrarEnCentro(panelOrigen);
                     }
                 }
             }

@@ -22,9 +22,6 @@ public class DevolverPrestamo extends javax.swing.JPanel {
         cargarTabla();
     }
 
-    DevolverPrestamo() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     
     void cargarTabla() {
         javax.swing.table.DefaultTableModel modelo =

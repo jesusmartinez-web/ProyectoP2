@@ -65,7 +65,7 @@ public class ControladorRepositorio {
                 alumno.setFacultadPerteneciente(aCambiar);
                 break;
             default:
-                Menus.opcionInvalida();
+              
                 break;
         }
     }
@@ -102,7 +102,7 @@ public class ControladorRepositorio {
                 libro.setAutor(aCambiar);
                 break;
             default:
-                Menus.opcionInvalida();
+         
                 break;
         }
     }
@@ -155,7 +155,7 @@ public class ControladorRepositorio {
                 prestamo.setFechaDevuelta(aCambiar);
                 break;
             default:
-                Menus.opcionInvalida();
+               
                 break;
         }
         prestamo.verificarVencimiento();

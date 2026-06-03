@@ -142,14 +142,15 @@ public class CargarAlumnos extends javax.swing.JPanel {
     }//GEN-LAST:event_facuPertenecienteActionPerformed
 
     private void botonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearActionPerformed
-      switch (modo) {
+       
+        switch (modo) {
 
             case "CREAR" -> {
                 boolean creado = Controller.ControladorView.agregarAlumno(
-                    nombre.getText(), nroDeDoc.getText(), email.getText(),
-                    telf.getText(), fechaNac.getText(), facuPerteneciente.getText());
+                        nombre.getText(), nroDeDoc.getText(), email.getText(),
+                        telf.getText(), fechaNac.getText(), facuPerteneciente.getText());
 
-                if (creado) { 
+                if (creado) {
                     nombre.setText("");
                     nroDeDoc.setText("");
                     email.setText("");
@@ -160,23 +161,19 @@ public class CargarAlumnos extends javax.swing.JPanel {
             }
 
             case "EDITAR" -> {
-                Controller.ControladorView.editarAlumno(
-                nroDeDoc.getText(), nombre.getText(), email.getText(),
-                telf.getText(), fechaNac.getText(), facuPerteneciente.getText());
+                boolean actualizado = Controller.ControladorView.editarAlumno(
+                        this.docOriginal, nroDeDoc.getText(), nombre.getText(), email.getText(),
+                        telf.getText(), fechaNac.getText(), facuPerteneciente.getText());
 
-                javax.swing.JOptionPane.showMessageDialog(this, "Alumno actualizado con éxito.");
-           
-                if (panelOrigen != null) {
-                   
-                     VentanaPrincipal principal = (VentanaPrincipal) javax.swing.SwingUtilities.getWindowAncestor(this);
-
+                if (actualizado && panelOrigen != null) {
+                    VentanaPrincipal principal = (VentanaPrincipal) javax.swing.SwingUtilities.getWindowAncestor(this);
                     if (principal != null) {
                         EditarAlumno nuevoPanelEditar = new EditarAlumno(principal);
                         principal.mostrarEnCentro(nuevoPanelEditar);
-                                }
-                            }
+                    }
+                }
             }
-      }
+        }
     }//GEN-LAST:event_botonCrearActionPerformed
     public void configurar(String modo, Clases.Model.Alumno alumno, EditarAlumno origen) {
         this.modo = modo;

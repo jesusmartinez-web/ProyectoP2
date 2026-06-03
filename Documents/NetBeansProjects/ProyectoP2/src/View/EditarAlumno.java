@@ -87,45 +87,45 @@ public class EditarAlumno extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     
     
-void cargarTabla() {
-    javax.swing.table.DefaultTableModel modelo =
+    void cargarTabla() {
+        javax.swing.table.DefaultTableModel modelo =
             (javax.swing.table.DefaultTableModel) jTable1.getModel();
-    modelo.setRowCount(0);
-    for (Clases.Model.Alumno a : Controller.ControladorView.obtenerAlumnos()) {
-        modelo.addRow(new Object[]{
-            a.getNombreCompleto(),
-            a.getNroDeDocumento(),
-            a.getEmail(),
-            a.getTelefono(),
-            a.getFechaDeNacimiento(),
-            a.getFacultadPerteneciente()
+        modelo.setRowCount(0);
+        for (Clases.Model.Alumno a : Controller.ControladorView.obtenerAlumnos()) {
+            modelo.addRow(new Object[]{
+                a.getNombreCompleto(),
+                a.getNroDeDocumento(),
+                a.getEmail(),
+                a.getTelefono(),
+                a.getFechaDeNacimiento(),
+                a.getFacultadPerteneciente()
         });
     }
 }
 
 
-private javax.swing.JPanel crearPanelEdicion() {
-    javax.swing.JPanel panel = new javax.swing.JPanel(new java.awt.GridLayout(7, 2, 10, 10));
-    panel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+    private javax.swing.JPanel crearPanelEdicion() {
+        javax.swing.JPanel panel = new javax.swing.JPanel(new java.awt.GridLayout(7, 2, 10, 10));
+        panel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-    campoNombre    = new javax.swing.JTextField();
-    campoDoc       = new javax.swing.JTextField();
-    campoEmail     = new javax.swing.JTextField();
-    campoTelf      = new javax.swing.JTextField();
-    campoFechaNac  = new javax.swing.JTextField();
-    campoFacultad  = new javax.swing.JTextField();
-    botonGuardar   = new javax.swing.JButton("Guardar cambios");
+        campoNombre    = new javax.swing.JTextField();
+        campoDoc       = new javax.swing.JTextField();
+        campoEmail     = new javax.swing.JTextField();
+        campoTelf      = new javax.swing.JTextField();
+        campoFechaNac  = new javax.swing.JTextField();
+        campoFacultad  = new javax.swing.JTextField();
+        botonGuardar   = new javax.swing.JButton("Guardar cambios");
 
-    panel.add(new javax.swing.JLabel("Nombre:"));        panel.add(campoNombre);
-    panel.add(new javax.swing.JLabel("Documento:"));     panel.add(campoDoc);
-    panel.add(new javax.swing.JLabel("Email:"));         panel.add(campoEmail);
-    panel.add(new javax.swing.JLabel("Teléfono:"));      panel.add(campoTelf);
-    panel.add(new javax.swing.JLabel("Fecha Nac:"));     panel.add(campoFechaNac);
-    panel.add(new javax.swing.JLabel("Facultad:"));      panel.add(campoFacultad);
-    panel.add(new javax.swing.JLabel(""));               panel.add(botonGuardar);
+        panel.add(new javax.swing.JLabel("Nombre:"));        panel.add(campoNombre);
+        panel.add(new javax.swing.JLabel("Documento:"));     panel.add(campoDoc);
+        panel.add(new javax.swing.JLabel("Email:"));         panel.add(campoEmail);
+        panel.add(new javax.swing.JLabel("Teléfono:"));      panel.add(campoTelf);
+        panel.add(new javax.swing.JLabel("Fecha Nac:"));     panel.add(campoFechaNac);
+        panel.add(new javax.swing.JLabel("Facultad:"));      panel.add(campoFacultad);
+        panel.add(new javax.swing.JLabel(""));               panel.add(botonGuardar);
 
-    botonGuardar.addActionListener(e -> guardarCambios());
-    return panel;
+        botonGuardar.addActionListener(e -> guardarCambios());
+        return panel;
 }
     
     private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
@@ -154,6 +154,7 @@ private javax.swing.JPanel crearPanelEdicion() {
     private void guardarCambios() {
         Controller.ControladorView.editarAlumno(
             campoBusqueda.getText().trim(),
+            campoDoc.getText().trim(),
             campoNombre.getText(),
             campoEmail.getText(),
             campoTelf.getText(),

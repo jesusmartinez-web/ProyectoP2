@@ -1,24 +1,55 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controller;
+
 import View.VentanaPrincipal;
-/**
- *
- * @author ThinkPad
- */
+import Clases.Model.*;
+import Repositorios.*;
+import java.util.Collection;
+
 public class ControladorView {
-    
-    static int opcion;
-    static public String menuSeleccionado;
-    public static boolean activo = true;
-    
-   public static void controlMenuPrincipal() {
+
+    public static void controlMenuPrincipal() {
         java.awt.EventQueue.invokeLater(() -> {
-            VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
-            ventanaPrincipal.setVisible(true);
+            VentanaPrincipal v = new VentanaPrincipal();
+            v.setVisible(true);
         });
     }
-    
+
+    // Alumnos
+    public static void agregarAlumno(Alumno a) {
+        ControladorRepositorio.repositorioAlumnos.anhadir(a);
+    }
+
+    public static Collection<Alumno> obtenerAlumnos() {
+        return RepositorioAlumno.alumnos.values();
+    }
+
+    public static void borrarAlumno(Alumno a) {
+        ControladorRepositorio.repositorioAlumnos.borrar(a);
+    }
+
+    // Libros 
+    public static void agregarLibro(Libro l) {
+        ControladorRepositorio.repositorioLibros.anhadir(l);
+    }
+
+    public static Collection<Libro> obtenerLibros() {
+        return RepositorioLibros.libros.values();
+    }
+
+    public static void borrarLibro(Libro l) {
+        ControladorRepositorio.repositorioLibros.borrar(l);
+    }
+
+    // Prestamos 
+    public static void agregarPrestamo(Prestamo p) {
+        ControladorRepositorio.repositorioPrestamos.anhadir(p);
+    }
+
+    public static Collection<Prestamo> obtenerPrestamos() {
+        return RepositorioPrestamos.prestamos.values();
+    }
+
+    public static void borrarPrestamo(Prestamo p) {
+        ControladorRepositorio.repositorioPrestamos.borrar(p);
+    }
 }

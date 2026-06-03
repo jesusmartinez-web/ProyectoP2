@@ -27,13 +27,13 @@ public class CargarLibros extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        nombre = new javax.swing.JTextField();
+        titulo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        nroDeDoc = new javax.swing.JTextField();
+        editorial = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        email = new javax.swing.JTextField();
+        anhoPublicacion = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        telf = new javax.swing.JTextField();
+        autor = new javax.swing.JTextField();
         botonCrear = new javax.swing.JButton();
 
         jLabel1.setText("Titulo");
@@ -42,11 +42,11 @@ public class CargarLibros extends javax.swing.JPanel {
 
         jLabel3.setText("Autor");
 
-        email.addActionListener(this::emailActionPerformed);
+        anhoPublicacion.addActionListener(this::anhoPublicacionActionPerformed);
 
         jLabel4.setText("Año de Publicacion");
 
-        telf.addActionListener(this::telfActionPerformed);
+        autor.addActionListener(this::autorActionPerformed);
 
         botonCrear.setText("Crear");
         botonCrear.addActionListener(this::botonCrearActionPerformed);
@@ -60,16 +60,16 @@ public class CargarLibros extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                            .addComponent(anhoPublicacion, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nombre, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(titulo, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(76, 76, 76)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel2)
-                            .addComponent(nroDeDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(telf, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(editorial, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(autor, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(botonCrear))
                 .addContainerGap(180, Short.MAX_VALUE))
         );
@@ -82,55 +82,83 @@ public class CargarLibros extends javax.swing.JPanel {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nroDeDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(telf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(anhoPublicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(autor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
                 .addComponent(botonCrear)
                 .addContainerGap(172, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
+    private void anhoPublicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anhoPublicacionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_emailActionPerformed
+    }//GEN-LAST:event_anhoPublicacionActionPerformed
 
-    private void telfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telfActionPerformed
+    private void autorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_autorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_telfActionPerformed
+    }//GEN-LAST:event_autorActionPerformed
 
     private void botonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearActionPerformed
-        // TODO add your handling code here:
-        
-        Controller.ControladorView.agregarLibro(
-                nombre.getText(),
-                nroDeDoc.getText(),
-                email.getText(),
-                telf.getText() );
-        nombre.setText("");
-        nroDeDoc.setText("");
-        email.setText("");
-        telf.setText("");
+        switch (modo) {
+            case "CREAR" -> {
+                Controller.ControladorView.agregarLibro(
+                    titulo.getText(), editorial.getText(),
+                    autor.getText(), anhoPublicacion.getText());
+                titulo.setText("");
+                editorial.setText("");
+                autor.setText("");
+                anhoPublicacion.setText("");
+            }
+            case "EDITAR" -> {
+                boolean ok = Controller.ControladorView.editarLibro(
+                    libroId, titulo.getText(), editorial.getText(),
+                    autor.getText(), anhoPublicacion.getText());
+
+                if (ok && panelOrigen != null) {
+                    VentanaPrincipal principal = (VentanaPrincipal)
+                        javax.swing.SwingUtilities.getWindowAncestor(this);
+                    if (principal != null) {
+                        panelOrigen.cargarTabla(); // actualiza la tabla
+                        principal.mostrarEnCentro(panelOrigen); // vuelve a EditarLibro
+                    }
+                }
+            }
+        }
 
     }//GEN-LAST:event_botonCrearActionPerformed
-
+    
+    public void precargarDatos(Clases.Model.Libro libro, EditarLibro origen) {
+        this.modo = "EDITAR";
+        this.libroId = libro.getId();
+        this.panelOrigen = origen;
+        titulo.setText(libro.getTitulo());
+        editorial.setText(libro.getEditorial());
+        autor.setText(libro.getAutor());
+        anhoPublicacion.setText(libro.getAnhoDePublicacion());
+        botonCrear.setText("Guardar cambios");
+    }
+    
+    private String modo = "CREAR";
+    private int libroId = -1;
+    private EditarLibro panelOrigen;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField anhoPublicacion;
+    private javax.swing.JTextField autor;
     private javax.swing.JButton botonCrear;
-    private javax.swing.JTextField email;
+    private javax.swing.JTextField editorial;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField nombre;
-    private javax.swing.JTextField nroDeDoc;
-    private javax.swing.JTextField telf;
+    private javax.swing.JTextField titulo;
     // End of variables declaration//GEN-END:variables
 }

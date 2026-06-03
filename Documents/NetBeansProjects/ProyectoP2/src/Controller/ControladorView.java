@@ -147,6 +147,40 @@ public class ControladorView {
         javax.swing.JOptionPane.showMessageDialog(null, "Alumno actualizado correctamente!");
         return true;
     }
+    
+    public static Clases.Model.Libro buscarLibro(String idStr) {
+        try {
+            int id = Integer.parseInt(idStr.trim());
+            for (Clases.Model.Libro l : RepositorioLibros.libros.values()) {
+                if (l.getId() == id) return l;
+            }
+            javax.swing.JOptionPane.showMessageDialog(null,
+                "No se encontró libro con el ID: " + id,
+                "Libro no encontrado", javax.swing.JOptionPane.WARNING_MESSAGE);
+        } catch (NumberFormatException e) {
+            javax.swing.JOptionPane.showMessageDialog(null,
+                "El ID debe ser un número.", "ID inválido",
+                javax.swing.JOptionPane.WARNING_MESSAGE);
+        }
+        return null;
+    }
+
+    public static boolean editarLibro(int id, String titulo, String editorial,
+                                       String autor, String anho) {
+        for (Clases.Model.Libro l : RepositorioLibros.libros.values()) {
+            if (l.getId() == id) {
+                l.setTitulo(titulo);
+                l.setEditorial(editorial);
+                l.setAutor(autor);
+                l.setAnhoDePublicacion(anho);
+                javax.swing.JOptionPane.showMessageDialog(null, "Libro actualizado correctamente!");
+                return true;
+            }
+        }
+        javax.swing.JOptionPane.showMessageDialog(null, "No se encontró el libro.");
+        return false;
+    }
+    
     public static void marcarLibrosNoDisponibles(java.util.List<String> titulosLibros) {
         for (Clases.Model.Libro libro : Repositorios.RepositorioLibros.libros.values()) {
             if (titulosLibros.contains(libro.getTitulo())) {

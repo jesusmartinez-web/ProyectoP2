@@ -188,12 +188,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAmarilloAlPasar6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAmarilloAlPasar6ActionPerformed
-        // TODO add your handling code here:
+
         System.exit(0);
     }//GEN-LAST:event_botonAmarilloAlPasar6ActionPerformed
 
     private void cambiarMenu(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarMenu
-        String menu = ((javax.swing.JButton) evt.getSource()).getText(); // "Alumnos", "Libros", etc.
+        String menu = ((javax.swing.JButton) evt.getSource()).getText();
         SubMenus vistaSub = new SubMenus(this, menu);
         this.panelIzquierda.add(vistaSub.getContentPane().getComponent(0), "cardSubmenu");
         java.awt.CardLayout layout = (java.awt.CardLayout) this.panelIzquierda.getLayout();
@@ -202,7 +202,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_cambiarMenu
 
     private void devolverPrestamoscambiarMenu(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverPrestamoscambiarMenu
-        // TODO add your handling code here:
+
         mostrarEnCentro(new DevolverPrestamo(this));
         
     }//GEN-LAST:event_devolverPrestamoscambiarMenu

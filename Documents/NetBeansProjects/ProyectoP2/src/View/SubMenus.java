@@ -232,7 +232,7 @@ public class SubMenus extends javax.swing.JFrame {
                         p.verificarVencimiento()
                     });
                 }
-                // Filtro por alumno
+
                 javax.swing.table.TableRowSorter<javax.swing.table.DefaultTableModel> sorter
                         = new javax.swing.table.TableRowSorter<>(modelo);
                 tablaPrestamo.getTabla().setRowSorter(sorter);
@@ -263,11 +263,11 @@ public class SubMenus extends javax.swing.JFrame {
                     }
                 });
 
-                // Comparator para fecha de préstamo (col 3) y fecha de devolución (col 4)
+
                 sorter.setComparator(3, java.util.Comparator.comparing(Object::toString));
                 sorter.setComparator(4, java.util.Comparator.comparing(Object::toString));
 
-                // Botones de ordenamiento por fecha
+
                 javax.swing.JButton botonFechaPrestamo   = new javax.swing.JButton("Ordenar por F. Préstamo");
                 javax.swing.JButton botonFechaDevolucion = new javax.swing.JButton("Ordenar por F. Devolución");
                 botonFechaPrestamo.addActionListener(e -> sorter.setSortKeys(

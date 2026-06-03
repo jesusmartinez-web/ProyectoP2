@@ -177,7 +177,7 @@ public class CargarAlumnos extends javax.swing.JPanel {
     }//GEN-LAST:event_botonCrearActionPerformed
     public void configurar(String modo, Clases.Model.Alumno alumno, EditarAlumno origen) {
         this.modo = modo;
-        this.panelOrigen = origen; // Guardamos la referencia de la tabla
+        this.panelOrigen = origen; 
         switch (modo) {
             case "CREAR" -> {
                 botonCrear.setText("Crear");

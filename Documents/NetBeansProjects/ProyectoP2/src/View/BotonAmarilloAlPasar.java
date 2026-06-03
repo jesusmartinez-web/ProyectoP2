@@ -7,7 +7,6 @@ import javax.swing.JButton;
 
 public class BotonAmarilloAlPasar extends JButton {
 
-    // Constructor obligatorio: Aquí configuras el diseño base del botón
     public BotonAmarilloAlPasar() {
         this.setText("Mi Boton");
         this.setFocusPainted(false);        

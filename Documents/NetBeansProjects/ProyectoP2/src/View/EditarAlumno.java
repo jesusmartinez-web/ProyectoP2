@@ -14,6 +14,7 @@ public class EditarAlumno extends javax.swing.JPanel {
 
     /**
      * Creates new form EditarAlumno
+     * @param ventanaPrincipal
      */
     public EditarAlumno(VentanaPrincipal ventanaPrincipal) {
         initComponents();
@@ -86,7 +87,7 @@ public class EditarAlumno extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     
     
-private void cargarTabla() {
+void cargarTabla() {
     javax.swing.table.DefaultTableModel modelo =
             (javax.swing.table.DefaultTableModel) jTable1.getModel();
     modelo.setRowCount(0);
@@ -183,4 +184,6 @@ private javax.swing.JPanel crearPanelEdicion() {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+
 }

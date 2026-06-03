@@ -142,51 +142,57 @@ public class CargarAlumnos extends javax.swing.JPanel {
     }//GEN-LAST:event_facuPertenecienteActionPerformed
 
     private void botonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearActionPerformed
-         switch (modo) {
+      switch (modo) {
 
-        case "CREAR" -> {
-            boolean creado = Controller.ControladorView.agregarAlumno(
-                nombre.getText(), nroDeDoc.getText(), email.getText(),
-                telf.getText(), fechaNac.getText(), facuPerteneciente.getText());
+            case "CREAR" -> {
+                boolean creado = Controller.ControladorView.agregarAlumno(
+                    nombre.getText(), nroDeDoc.getText(), email.getText(),
+                    telf.getText(), fechaNac.getText(), facuPerteneciente.getText());
 
-            if (creado) { 
-                nombre.setText("");
-                nroDeDoc.setText("");
-                email.setText("");
-                telf.setText("");
-                fechaNac.setText("");
-                facuPerteneciente.setText("");
+                if (creado) { 
+                    nombre.setText("");
+                    nroDeDoc.setText("");
+                    email.setText("");
+                    telf.setText("");
+                    fechaNac.setText("");
+                    facuPerteneciente.setText("");
+                }
             }
-        }
 
-        case "EDITAR" -> {
-            Controller.ControladorView.editarAlumno(
+            case "EDITAR" -> {
+                Controller.ControladorView.editarAlumno(
                 nroDeDoc.getText(), nombre.getText(), email.getText(),
                 telf.getText(), fechaNac.getText(), facuPerteneciente.getText());
-        }
-    }
-    // Si falló, los campos quedan llenos para que el usuario corrija el documento
+
+                javax.swing.JOptionPane.showMessageDialog(this, "Alumno actualizado con éxito.");
+           
+                if (panelOrigen != null) {
+                   
+                     VentanaPrincipal principal = (VentanaPrincipal) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+                    if (principal != null) {
+                        EditarAlumno nuevoPanelEditar = new EditarAlumno(principal);
+                        principal.mostrarEnCentro(nuevoPanelEditar);
+                                }
+                            }
+            }
+      }
     }//GEN-LAST:event_botonCrearActionPerformed
-    public void configurar(String modo, Clases.Model.Alumno alumno) {
+    public void configurar(String modo, Clases.Model.Alumno alumno, EditarAlumno origen) {
         this.modo = modo;
+        this.panelOrigen = origen; // Guardamos la referencia de la tabla
         switch (modo) {
             case "CREAR" -> {
                 botonCrear.setText("Crear");
-                nroDeDoc.setEditable(true); // en crear sí se puede escribir el documento
+                nroDeDoc.setEditable(true);
             }
             case "EDITAR" -> {
-                nombre.setText(alumno.getNombreCompleto());
-                nroDeDoc.setText(alumno.getNroDeDocumento());
-                email.setText(alumno.getEmail());
-                telf.setText(alumno.getTelefono());
-                fechaNac.setText(alumno.getFechaDeNacimiento());
-                facuPerteneciente.setText(alumno.getFacultadPerteneciente());
-                botonCrear.setText("Guardar cambios");
-                nroDeDoc.setEditable(false); // en editar el documento no se puede cambiar (es la clave)
+                precargarDatos(alumno);
             }
         }
     }
     public void precargarDatos(Clases.Model.Alumno alumno) {
+        this.modo = "EDITAR"; // <--- OBLIGATORIO: Asegura el cambio de modo
         nombre.setText(alumno.getNombreCompleto());
         nroDeDoc.setText(alumno.getNroDeDocumento());
         email.setText(alumno.getEmail());
@@ -194,6 +200,7 @@ public class CargarAlumnos extends javax.swing.JPanel {
         fechaNac.setText(alumno.getFechaDeNacimiento());
         facuPerteneciente.setText(alumno.getFacultadPerteneciente());
         botonCrear.setText("Guardar cambios");
+        nroDeDoc.setEditable(true);
 }
     
 
@@ -213,4 +220,5 @@ public class CargarAlumnos extends javax.swing.JPanel {
     private javax.swing.JTextField telf;
     // End of variables declaration//GEN-END:variables
     private String modo = "CREAR";
+    private EditarAlumno panelOrigen;
 }

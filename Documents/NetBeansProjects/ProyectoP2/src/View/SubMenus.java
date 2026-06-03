@@ -120,8 +120,6 @@ public class SubMenus extends javax.swing.JFrame {
     }//GEN-LAST:event_botonAtrasActionPerformed
 
     private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
-
-
         botonEditar.setVisible(false);
         botonCrear.setVisible(false);
         botonListar.setVisible(false);
@@ -129,30 +127,9 @@ public class SubMenus extends javax.swing.JFrame {
         switch (menuActual) {
 
             case "Alumnos" -> {
-                // La View solo pide el dato, el controlador busca y valida
-                String nroDoc = javax.swing.JOptionPane.showInputDialog(
-                    this, "Ingresá el número de documento del alumno a editar:");
-
-                if (nroDoc != null && !nroDoc.isBlank()) {
-                    Clases.Model.Alumno alumno = Controller.ControladorView.buscarAlumno(nroDoc);
-
-                    if (alumno != null) {
-                        // Reutilizamos CargarAlumnos en modo EDITAR — no creamos otro objeto
-                        CargarAlumnos form = new CargarAlumnos();
-                        form.configurar("EDITAR", alumno);
-                        ventanaPrincipal.mostrarEnCentro(form);
-                    } else {
-                        // El controlador ya mostró el error, solo restauramos los botones
-                        botonEditar.setVisible(true);
-                        botonCrear.setVisible(true);
-                        botonListar.setVisible(true);
-                    }
-                } else {
-                    // El usuario canceló el diálogo — restauramos los botones
-                    botonEditar.setVisible(true);
-                    botonCrear.setVisible(true);
-                    botonListar.setVisible(true);
-                }
+                
+                EditarAlumno form = new EditarAlumno(ventanaPrincipal);
+                ventanaPrincipal.mostrarEnCentro(form);
             }
 
             case "Libros"    -> javax.swing.JOptionPane.showMessageDialog(this, "Próximamente: Editar Libros");

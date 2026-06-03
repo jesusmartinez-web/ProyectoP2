@@ -181,6 +181,7 @@ public class SubMenus extends javax.swing.JFrame {
                 modelo.setRowCount(0);
                 for (Clases.Model.Libro l : Controller.ControladorView.obtenerLibros()) {
                     modelo.addRow(new Object[]{
+                        l.getId(),
                         l.getTitulo(),
                         l.getEditorial(),
                         l.getAnhoDePublicacion(),

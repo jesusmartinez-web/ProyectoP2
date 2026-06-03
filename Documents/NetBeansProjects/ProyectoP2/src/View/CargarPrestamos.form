@@ -16,104 +16,47 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="tablaAlumno2" alignment="0" pref="829" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="email" pref="159" max="32767" attributes="0"/>
-                              <Component id="jLabel1" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
-                              <Component id="nombre" alignment="1" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel3" max="32767" attributes="0"/>
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <Component id="nroDeDoc" min="-2" pref="141" max="-2" attributes="0"/>
-                          <Component id="telf" min="-2" pref="159" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Component id="botonCrear" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="nroDeDoc" min="-2" pref="281" max="-2" attributes="0"/>
+                  <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="botonSgte" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="138" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel1" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="nombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="nroDeDoc" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel3" min="-2" pref="24" max="-2" attributes="0"/>
-                  <Component id="jLabel4" alignment="0" min="-2" pref="24" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="email" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="telf" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-              <Component id="botonCrear" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="280" max="32767" attributes="0"/>
+              <Component id="tablaAlumno2" min="-2" pref="625" max="-2" attributes="0"/>
+              <EmptySpace pref="27" max="32767" attributes="0"/>
+              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="nroDeDoc" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="botonSgte" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Alumno"/>
+        <Property name="text" type="java.lang.String" value="Dame el Nro de Documento del Alumno que prestara"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="nombre">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Libro o Libros (separados por coma)"/>
-      </Properties>
+    <Component class="View.TablaAlumno" name="tablaAlumno2">
     </Component>
     <Component class="javax.swing.JTextField" name="nroDeDoc">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JButton" name="botonSgte">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Fecha de Devolucion  (A&#xd1;O, MES,DIA)"/>
+        <Property name="text" type="java.lang.String" value="Siguiente"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="email">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="emailActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Fecha del Prestamo (A&#xd1;O, MES,DIA)"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="telf">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="telfActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="botonCrear">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Crear"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCrearActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -96,15 +96,25 @@ public class ControladorView {
         ControladorRepositorio.repositorioPrestamos.borrar(p);
     }
     
+    // Reemplazá el método buscarAlumno que ya tenés:
     public static Clases.Model.Alumno buscarAlumno(String nroDoc) {
-        return Repositorios.RepositorioAlumno.alumnos.get(nroDoc);
+        Clases.Model.Alumno alumno = RepositorioAlumno.alumnos.get(nroDoc);
+        if (alumno == null) {
+            javax.swing.JOptionPane.showMessageDialog(null,
+                "No se encontró alumno con el documento: " + nroDoc,
+                "Alumno no encontrado",
+                javax.swing.JOptionPane.WARNING_MESSAGE);
+        }
+        return alumno; // devuelve null si no existe, la View solo pregunta si es null
     }
 
-    public static void editarAlumno(String nroDoc, String nombre, String email, String telf, String fechaNac, String facultad) {
-        Clases.Model.Alumno alumno = Repositorios.RepositorioAlumno.alumnos.get(nroDoc);
+    // Reemplazá el método editarAlumno que ya tenés:
+    public static boolean editarAlumno(String nroDoc, String nombre, String email,
+                                       String telf, String fechaNac, String facultad) {
+        Clases.Model.Alumno alumno = RepositorioAlumno.alumnos.get(nroDoc);
         if (alumno == null) {
             javax.swing.JOptionPane.showMessageDialog(null, "No se encontró el alumno.");
-            return;
+            return false;
         }
         alumno.setNombreCompleto(nombre);
         alumno.setEmail(email);
@@ -112,6 +122,7 @@ public class ControladorView {
         alumno.setFechaDeNacimiento(fechaNac);
         alumno.setFacultadPerteneciente(facultad);
         javax.swing.JOptionPane.showMessageDialog(null, "Alumno actualizado correctamente!");
+        return true;
     }
     
 }

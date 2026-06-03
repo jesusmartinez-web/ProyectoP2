@@ -21,7 +21,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
 
     }
-    
+    public void limpiarCentro() {
+    Centro.removeAll();
+    Centro.revalidate();
+    Centro.repaint();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -180,11 +184,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonAmarilloAlPasar6ActionPerformed
 
     private void cambiarMenu(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarMenu
-                            
-        SubMenus vistaSub = new SubMenus(this);
-        
+        String menu = ((javax.swing.JButton) evt.getSource()).getText(); // "Alumnos", "Libros", etc.
+        SubMenus vistaSub = new SubMenus(this, menu);
         this.panelIzquierda.add(vistaSub.getContentPane().getComponent(0), "cardSubmenu");
-        
         java.awt.CardLayout layout = (java.awt.CardLayout) this.panelIzquierda.getLayout();
         layout.show(this.panelIzquierda, "cardSubmenu");
         

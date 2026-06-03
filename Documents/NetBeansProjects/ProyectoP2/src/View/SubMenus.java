@@ -10,16 +10,17 @@ package View;
  */
 public class SubMenus extends javax.swing.JFrame {
     private VentanaPrincipal ventanaPrincipal;
-    
+    private String menuActual;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(SubMenus.class.getName());
 
     /**
      * Creates new form SubMenus
      */
-    public SubMenus(VentanaPrincipal ventanaPrincipal) {
+    public SubMenus(VentanaPrincipal ventanaPrincipal, String menuActual) {
     initComponents();
     this.ventanaPrincipal = ventanaPrincipal;
-    }
+    this.menuActual = menuActual;
+}
 
 
     /**
@@ -32,36 +33,36 @@ public class SubMenus extends javax.swing.JFrame {
     private void initComponents() {
 
         Menus = new javax.swing.JPanel();
-        botonAmarilloAlPasar5 = new View.BotonAmarilloAlPasar();
-        botonAmarilloAlPasar6 = new View.BotonAmarilloAlPasar();
-        botonAmarilloAlPasar7 = new View.BotonAmarilloAlPasar();
-        botonAmarilloAlPasar8 = new View.BotonAmarilloAlPasar();
+        botonListar = new View.BotonAmarilloAlPasar();
+        botonAtras = new View.BotonAmarilloAlPasar();
+        botonCrear = new View.BotonAmarilloAlPasar();
+        botonEditar = new View.BotonAmarilloAlPasar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Menus.setOpaque(false);
 
-        botonAmarilloAlPasar5.setBackground(new java.awt.Color(204, 102, 0));
-        botonAmarilloAlPasar5.setText("Listar");
-        botonAmarilloAlPasar5.setToolTipText("");
-        botonAmarilloAlPasar5.setContentAreaFilled(false);
+        botonListar.setBackground(new java.awt.Color(204, 102, 0));
+        botonListar.setText("Listar");
+        botonListar.setToolTipText("");
+        botonListar.setContentAreaFilled(false);
 
-        botonAmarilloAlPasar6.setBackground(new java.awt.Color(204, 102, 0));
-        botonAmarilloAlPasar6.setText("Atras");
-        botonAmarilloAlPasar6.setToolTipText("");
-        botonAmarilloAlPasar6.setContentAreaFilled(false);
-        botonAmarilloAlPasar6.addActionListener(this::botonAmarilloAlPasar6ActionPerformed);
+        botonAtras.setBackground(new java.awt.Color(204, 102, 0));
+        botonAtras.setText("Atras");
+        botonAtras.setToolTipText("");
+        botonAtras.setContentAreaFilled(false);
+        botonAtras.addActionListener(this::botonAtrasActionPerformed);
 
-        botonAmarilloAlPasar7.setBackground(new java.awt.Color(204, 102, 0));
-        botonAmarilloAlPasar7.setText("Crear");
-        botonAmarilloAlPasar7.setContentAreaFilled(false);
-        botonAmarilloAlPasar7.addActionListener(this::botonAmarilloAlPasar7ActionPerformed);
+        botonCrear.setBackground(new java.awt.Color(204, 102, 0));
+        botonCrear.setText("Crear");
+        botonCrear.setContentAreaFilled(false);
+        botonCrear.addActionListener(this::botonCrearActionPerformed);
 
-        botonAmarilloAlPasar8.setBackground(new java.awt.Color(204, 102, 0));
-        botonAmarilloAlPasar8.setText("Editar");
-        botonAmarilloAlPasar8.setToolTipText("");
-        botonAmarilloAlPasar8.setContentAreaFilled(false);
-        botonAmarilloAlPasar8.addActionListener(this::botonAmarilloAlPasar8ActionPerformed);
+        botonEditar.setBackground(new java.awt.Color(204, 102, 0));
+        botonEditar.setText("Editar");
+        botonEditar.setToolTipText("");
+        botonEditar.setContentAreaFilled(false);
+        botonEditar.addActionListener(this::botonEditarActionPerformed);
 
         javax.swing.GroupLayout MenusLayout = new javax.swing.GroupLayout(Menus);
         Menus.setLayout(MenusLayout);
@@ -70,23 +71,23 @@ public class SubMenus extends javax.swing.JFrame {
             .addGroup(MenusLayout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addGroup(MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(botonAmarilloAlPasar5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonAmarilloAlPasar8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonAmarilloAlPasar7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonAmarilloAlPasar6, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
         MenusLayout.setVerticalGroup(
             MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenusLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(botonAmarilloAlPasar7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(botonAmarilloAlPasar8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(botonAmarilloAlPasar5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonListar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
-                .addComponent(botonAmarilloAlPasar6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonAtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
 
@@ -106,23 +107,37 @@ public class SubMenus extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonAmarilloAlPasar6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAmarilloAlPasar6ActionPerformed
+    private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
         javax.swing.JPanel contenedorPadre = (javax.swing.JPanel) this.Menus.getParent();
         
         if (contenedorPadre != null) {
             java.awt.CardLayout layout = (java.awt.CardLayout) contenedorPadre.getLayout();
             layout.show(contenedorPadre, "card2"); 
         }
-    }//GEN-LAST:event_botonAmarilloAlPasar6ActionPerformed
+        ventanaPrincipal.limpiarCentro();
+        
+        
+    }//GEN-LAST:event_botonAtrasActionPerformed
 
-    private void botonAmarilloAlPasar8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAmarilloAlPasar8ActionPerformed
+    private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_botonAmarilloAlPasar8ActionPerformed
+    }//GEN-LAST:event_botonEditarActionPerformed
 
-    private void botonAmarilloAlPasar7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAmarilloAlPasar7ActionPerformed
+    private void botonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearActionPerformed
         // TODO add your handling code here:
-        ventanaPrincipal.mostrarEnCentro(new CargarAlumnos());
-    }//GEN-LAST:event_botonAmarilloAlPasar7ActionPerformed
+        botonEditar.setVisible(false);
+        botonListar.setVisible(false);
+        switch (menuActual) {
+            
+            case "Alumnos"   -> {ventanaPrincipal.mostrarEnCentro(new CargarAlumnos());
+            }
+            case "Libros"    -> {ventanaPrincipal.mostrarEnCentro(new CargarLibros());
+            } 
+            case "Prestamos" -> {
+            }
+    }
+        
+    }//GEN-LAST:event_botonCrearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,9 +165,9 @@ public class SubMenus extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Menus;
-    private View.BotonAmarilloAlPasar botonAmarilloAlPasar5;
-    private View.BotonAmarilloAlPasar botonAmarilloAlPasar6;
-    private View.BotonAmarilloAlPasar botonAmarilloAlPasar7;
-    private View.BotonAmarilloAlPasar botonAmarilloAlPasar8;
+    private View.BotonAmarilloAlPasar botonAtras;
+    private View.BotonAmarilloAlPasar botonCrear;
+    private View.BotonAmarilloAlPasar botonEditar;
+    private View.BotonAmarilloAlPasar botonListar;
     // End of variables declaration//GEN-END:variables
 }

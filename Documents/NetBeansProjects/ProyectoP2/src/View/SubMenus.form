@@ -47,10 +47,10 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="botonAmarilloAlPasar5" max="32767" attributes="0"/>
-                      <Component id="botonAmarilloAlPasar8" alignment="0" max="32767" attributes="0"/>
-                      <Component id="botonAmarilloAlPasar7" alignment="0" max="32767" attributes="0"/>
-                      <Component id="botonAmarilloAlPasar6" min="-2" pref="85" max="-2" attributes="0"/>
+                      <Component id="botonListar" max="32767" attributes="0"/>
+                      <Component id="botonEditar" alignment="0" max="32767" attributes="0"/>
+                      <Component id="botonCrear" alignment="0" max="32767" attributes="0"/>
+                      <Component id="botonAtras" min="-2" pref="85" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="55" max="32767" attributes="0"/>
               </Group>
@@ -60,20 +60,20 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="botonAmarilloAlPasar7" min="-2" max="-2" attributes="0"/>
+                  <Component id="botonCrear" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="botonAmarilloAlPasar8" min="-2" max="-2" attributes="0"/>
+                  <Component id="botonEditar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="botonAmarilloAlPasar5" min="-2" max="-2" attributes="0"/>
+                  <Component id="botonListar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="151" max="32767" attributes="0"/>
-                  <Component id="botonAmarilloAlPasar6" min="-2" max="-2" attributes="0"/>
+                  <Component id="botonAtras" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="View.BotonAmarilloAlPasar" name="botonAmarilloAlPasar5">
+        <Component class="View.BotonAmarilloAlPasar" name="botonListar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="66" red="cc" type="rgb"/>
@@ -83,7 +83,7 @@
             <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="View.BotonAmarilloAlPasar" name="botonAmarilloAlPasar6">
+        <Component class="View.BotonAmarilloAlPasar" name="botonAtras">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="66" red="cc" type="rgb"/>
@@ -93,10 +93,10 @@
             <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAmarilloAlPasar6ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAtrasActionPerformed"/>
           </Events>
         </Component>
-        <Component class="View.BotonAmarilloAlPasar" name="botonAmarilloAlPasar7">
+        <Component class="View.BotonAmarilloAlPasar" name="botonCrear">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="66" red="cc" type="rgb"/>
@@ -105,10 +105,10 @@
             <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAmarilloAlPasar7ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCrearActionPerformed"/>
           </Events>
         </Component>
-        <Component class="View.BotonAmarilloAlPasar" name="botonAmarilloAlPasar8">
+        <Component class="View.BotonAmarilloAlPasar" name="botonEditar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="66" red="cc" type="rgb"/>
@@ -118,7 +118,7 @@
             <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAmarilloAlPasar8ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonEditarActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

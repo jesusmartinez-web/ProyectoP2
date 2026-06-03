@@ -182,6 +182,19 @@ public class SubMenus extends javax.swing.JFrame {
                         a.getFacultadPerteneciente()
                     });
                 }
+                java.util.Comparator<Object> comparatorNombre = (a1, b)
+                        -> a1.toString().compareToIgnoreCase(b.toString());
+
+                java.util.Comparator<Object> comparatorEdad = (a1, b)
+                        -> a1.toString().compareTo(b.toString());
+
+                javax.swing.table.TableRowSorter<javax.swing.table.DefaultTableModel> sorter
+                        = new javax.swing.table.TableRowSorter<>(modelo);
+
+                sorter.setComparator(0, comparatorNombre); 
+                sorter.setComparator(4, comparatorEdad);  
+
+                tablaAlumno.getTabla().setRowSorter(sorter);
                 ventanaPrincipal.mostrarEnCentro(tablaAlumno);
             }
 

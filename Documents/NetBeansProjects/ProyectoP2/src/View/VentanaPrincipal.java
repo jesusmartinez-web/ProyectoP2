@@ -55,6 +55,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonAmarilloAlPasar6 = new View.BotonAmarilloAlPasar();
         botonAmarilloAlPasar7 = new View.BotonAmarilloAlPasar();
         botonAmarilloAlPasar8 = new View.BotonAmarilloAlPasar();
+        devolverPrestamos = new View.BotonAmarilloAlPasar();
         Centro = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -122,23 +123,29 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonAmarilloAlPasar8.setContentAreaFilled(false);
         botonAmarilloAlPasar8.addActionListener(this::cambiarMenu);
 
+        devolverPrestamos.setBackground(new java.awt.Color(204, 102, 0));
+        devolverPrestamos.setText("Devolver Prestamos");
+        devolverPrestamos.setToolTipText("");
+        devolverPrestamos.setContentAreaFilled(false);
+        devolverPrestamos.addActionListener(this::devolverPrestamoscambiarMenu);
+
         javax.swing.GroupLayout MenusLayout = new javax.swing.GroupLayout(Menus);
         Menus.setLayout(MenusLayout);
         MenusLayout.setHorizontalGroup(
             MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenusLayout.createSequentialGroup()
-                .addGroup(MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, MenusLayout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addGroup(MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(botonAmarilloAlPasar5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botonAmarilloAlPasar6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(MenusLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(botonAmarilloAlPasar8, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonAmarilloAlPasar7, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addGap(56, 56, 56)
+                .addGroup(MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonAmarilloAlPasar8, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonAmarilloAlPasar7, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonAmarilloAlPasar6, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(10, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenusLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(devolverPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonAmarilloAlPasar5, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32))
         );
         MenusLayout.setVerticalGroup(
             MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,7 +156,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(botonAmarilloAlPasar8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(botonAmarilloAlPasar5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(devolverPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addComponent(botonAmarilloAlPasar6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
@@ -191,6 +200,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         layout.show(this.panelIzquierda, "cardSubmenu");
         
     }//GEN-LAST:event_cambiarMenu
+
+    private void devolverPrestamoscambiarMenu(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverPrestamoscambiarMenu
+        // TODO add your handling code here:
+        mostrarEnCentro(new DevolverPrestamo());
+        
+    }//GEN-LAST:event_devolverPrestamoscambiarMenu
     
     
     
@@ -227,6 +242,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private View.BotonAmarilloAlPasar botonAmarilloAlPasar6;
     private View.BotonAmarilloAlPasar botonAmarilloAlPasar7;
     private View.BotonAmarilloAlPasar botonAmarilloAlPasar8;
+    private View.BotonAmarilloAlPasar devolverPrestamos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JSpinner jSpinner1;

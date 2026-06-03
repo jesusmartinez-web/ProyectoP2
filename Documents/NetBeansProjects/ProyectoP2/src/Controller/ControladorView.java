@@ -172,4 +172,18 @@ public class ControladorView {
         }
         return disponibles;
     }
+    public static boolean devolverPrestamo(int idPrestamo, String fechaDevuelta) {
+        Clases.Model.Prestamo prestamo = Repositorios.RepositorioPrestamos.prestamos.get(idPrestamo);
+        if (prestamo == null) {
+            javax.swing.JOptionPane.showMessageDialog(null,
+                    "No existe un préstamo con ID: " + idPrestamo,
+                    "No encontrado", javax.swing.JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        prestamo.setFechaDevuelta(fechaDevuelta);
+        prestamo.verificarVencimiento();
+        liberarLibros(prestamo.getLibros());
+        javax.swing.JOptionPane.showMessageDialog(null, "Devolución registrada correctamente!");
+        return true;
+    }
 }

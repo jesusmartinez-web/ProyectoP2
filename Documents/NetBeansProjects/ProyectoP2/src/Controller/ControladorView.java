@@ -86,4 +86,23 @@ public class ControladorView {
     public static void borrarPrestamo(Prestamo p) {
         ControladorRepositorio.repositorioPrestamos.borrar(p);
     }
+    
+    public static Clases.Model.Alumno buscarAlumno(String nroDoc) {
+        return Repositorios.RepositorioAlumno.alumnos.get(nroDoc);
+    }
+
+    public static void editarAlumno(String nroDoc, String nombre, String email, String telf, String fechaNac, String facultad) {
+        Clases.Model.Alumno alumno = Repositorios.RepositorioAlumno.alumnos.get(nroDoc);
+        if (alumno == null) {
+            javax.swing.JOptionPane.showMessageDialog(null, "No se encontró el alumno.");
+            return;
+        }
+        alumno.setNombreCompleto(nombre);
+        alumno.setEmail(email);
+        alumno.setTelefono(telf);
+        alumno.setFechaDeNacimiento(fechaNac);
+        alumno.setFacultadPerteneciente(facultad);
+        javax.swing.JOptionPane.showMessageDialog(null, "Alumno actualizado correctamente!");
+    }
+    
 }

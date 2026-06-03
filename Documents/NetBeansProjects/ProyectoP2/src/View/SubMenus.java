@@ -121,7 +121,16 @@ public class SubMenus extends javax.swing.JFrame {
     }//GEN-LAST:event_botonAtrasActionPerformed
 
     private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
-        // TODO add your handling code here:
+
+        botonEditar.setVisible(false);
+        botonCrear.setVisible(false);
+        botonListar.setVisible(false);
+
+        switch (menuActual) {
+            case "Alumnos" -> ventanaPrincipal.mostrarEnCentro(new EditarAlumno());
+            case "Libros"  -> javax.swing.JOptionPane.showMessageDialog(this, "Próximamente: Editar Libros");
+            case "Prestamos" -> javax.swing.JOptionPane.showMessageDialog(this, "Próximamente: Editar Préstamos");
+        }
     }//GEN-LAST:event_botonEditarActionPerformed
 
     private void botonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearActionPerformed
@@ -142,40 +151,66 @@ public class SubMenus extends javax.swing.JFrame {
     }//GEN-LAST:event_botonCrearActionPerformed
 
     private void accionListar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accionListar
-        // TODO add your handling code here:
         botonEditar.setVisible(false);
         botonCrear.setVisible(false);
         botonListar.setVisible(false);
 
-        // Según el menú donde estemos, mostrar la tabla correspondiente
-        if (menuActual.equals("Alumnos")) {
+        switch (menuActual) {
 
-            // 1. Crear la tabla
-            TablaAlumno tablaAlumno = new TablaAlumno();
-
-            // 2. Obtener el modelo (quien controla las filas)
-            javax.swing.table.DefaultTableModel modelo
-                    = (javax.swing.table.DefaultTableModel) tablaAlumno.getTabla().getModel();
-
-            // 3. Borrar las filas vacías que trae por defecto
-            modelo.setRowCount(0);
-
-            // 4. Traer los alumnos del repositorio y agregarlos fila por fila
-            for (Clases.Model.Alumno a : Controller.ControladorView.obtenerAlumnos()) {
-                modelo.addRow(new Object[]{
-                    a.getNombreCompleto(),
-                    a.getNroDeDocumento(),
-                    a.getEmail(),
-                    a.getTelefono(),
-                    a.getFechaDeNacimiento(),
-                    a.getFacultadPerteneciente()
-                });
+            case "Alumnos" -> {
+                TablaAlumno tablaAlumno = new TablaAlumno();
+                javax.swing.table.DefaultTableModel modelo =
+                    (javax.swing.table.DefaultTableModel) tablaAlumno.getTabla().getModel();
+                modelo.setRowCount(0);
+                for (Clases.Model.Alumno a : Controller.ControladorView.obtenerAlumnos()) {
+                    modelo.addRow(new Object[]{
+                        a.getNombreCompleto(),
+                        a.getNroDeDocumento(),
+                        a.getEmail(),
+                        a.getTelefono(),
+                        a.getFechaDeNacimiento(),
+                        a.getFacultadPerteneciente()
+                    });
+                }
+                ventanaPrincipal.mostrarEnCentro(tablaAlumno);
             }
 
-            // 5. Mostrar la tabla en el centro de la ventana
-            ventanaPrincipal.mostrarEnCentro(tablaAlumno);
-        }
+            case "Libros" -> {
+                TablaLibro tablaLibro = new TablaLibro();
+                javax.swing.table.DefaultTableModel modelo =
+                    (javax.swing.table.DefaultTableModel) tablaLibro.getTabla().getModel();
+                modelo.setRowCount(0);
+                for (Clases.Model.Libro l : Controller.ControladorView.obtenerLibros()) {
+                    modelo.addRow(new Object[]{
+                        l.getTitulo(),
+                        l.getEditorial(),
+                        l.getAnhoDePublicacion(),
+                        l.getAutor()
+                    });
+                }
+                ventanaPrincipal.mostrarEnCentro(tablaLibro);
+            }
 
+            case "Prestamos" -> {
+                TablaPrestamo tablaPrestamo = new TablaPrestamo();
+                javax.swing.table.DefaultTableModel modelo =
+                    (javax.swing.table.DefaultTableModel) tablaPrestamo.getTabla().getModel();
+                modelo.setRowCount(0);
+                for (Clases.Model.Prestamo p : Controller.ControladorView.obtenerPrestamos()) {
+                    String librosUnidos = String.join(", ", p.getLibros());
+                    modelo.addRow(new Object[]{
+                        p.getAlumno(),
+                        librosUnidos,
+                        p.getId(),
+                        p.getFechaDePrestamo(),
+                        p.getFechaDevolucion(),
+                        p.getFechaDevuelta() != null ? p.getFechaDevuelta() : "Pendiente",
+                        p.verificarVencimiento()
+                    });
+                }
+                ventanaPrincipal.mostrarEnCentro(tablaPrestamo);
+            }
+        }
     }//GEN-LAST:event_accionListar
     
         

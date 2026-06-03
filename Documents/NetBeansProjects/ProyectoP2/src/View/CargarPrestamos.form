@@ -18,26 +18,27 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="email" max="32767" attributes="0"/>
-                  <Component id="jLabel1" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
-                  <Component id="nombre" alignment="1" max="32767" attributes="0"/>
-                  <Component id="jLabel4" alignment="0" min="-2" pref="152" max="-2" attributes="0"/>
-                  <Component id="jLabel5" alignment="0" min="-2" pref="152" max="-2" attributes="0"/>
-                  <Component id="fechaNac" alignment="0" pref="159" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel6" min="-2" pref="152" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jLabel3" max="32767" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <Component id="nroDeDoc" min="-2" pref="141" max="-2" attributes="0"/>
-                      <Component id="telf" min="-2" pref="159" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="email" pref="159" max="32767" attributes="0"/>
+                              <Component id="jLabel1" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                              <Component id="nombre" alignment="1" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabel3" max="32767" attributes="0"/>
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <Component id="nroDeDoc" min="-2" pref="141" max="-2" attributes="0"/>
+                          <Component id="telf" min="-2" pref="159" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <Component id="facuPerteneciente" min="-2" pref="159" max="-2" attributes="0"/>
+                  <Component id="jButton1" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="149" max="32767" attributes="0"/>
+              <EmptySpace pref="138" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -64,17 +65,9 @@
                   <Component id="email" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="telf" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel5" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                  <Component id="jLabel6" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="fechaNac" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="facuPerteneciente" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="309" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="280" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -96,7 +89,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Telefono"/>
+        <Property name="text" type="java.lang.String" value="Fecha de Devolucion  (A&#xd1;O, MES,DIA)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="email">
@@ -106,7 +99,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Email"/>
+        <Property name="text" type="java.lang.String" value="Fecha del Prestamo (A&#xd1;O, MES,DIA)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="telf">
@@ -114,24 +107,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="telfActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Fecha de Nac"/>
+        <Property name="text" type="java.lang.String" value="Crear"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="fechaNac">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fechaNacActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Facultad a la que pertence"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="facuPerteneciente">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="facuPertenecienteActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

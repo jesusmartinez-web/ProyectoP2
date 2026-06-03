@@ -15,10 +15,20 @@ public class ControladorView {
     }
 
     // Alumnos
-    public static void agregarAlumno(Alumno a) {
-        ControladorRepositorio.repositorioAlumnos.anhadir(a);
-    }
+    public static void agregarAlumno(String nombreCompleto, String nroDoc, String email, 
+                                     String telf, String fechaNac, String facultad) {
+       Alumno alumno = new Alumno();
+       alumno.setNombreCompleto(nombreCompleto);
+       alumno.setNroDeDocumento(nroDoc);
+       alumno.setEmail(email);
+       alumno.setTelefono(telf);
+       alumno.setFechaDeNacimiento(fechaNac);
+       alumno.setFacultadPerteneciente(facultad);
 
+       ControladorRepositorio.repositorioAlumnos.anhadir(alumno);
+
+       javax.swing.JOptionPane.showMessageDialog(null, "Alumno creado correctamente!");
+   }
     public static Collection<Alumno> obtenerAlumnos() {
         return RepositorioAlumno.alumnos.values();
     }

@@ -9,7 +9,7 @@ package View;
  * @author ThinkPad
  */
 public class SubMenus extends javax.swing.JFrame {
-    private VentanaPrincipal ventanaPrincipal;
+    public VentanaPrincipal ventanaPrincipal;
     private String menuActual;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(SubMenus.class.getName());
 
@@ -127,13 +127,14 @@ public class SubMenus extends javax.swing.JFrame {
         // TODO add your handling code here:
         botonEditar.setVisible(false);
         botonListar.setVisible(false);
+        botonCrear.setVisible(false);
         switch (menuActual) {
             
             case "Alumnos"   -> {ventanaPrincipal.mostrarEnCentro(new CargarAlumnos());
             }
             case "Libros"    -> {ventanaPrincipal.mostrarEnCentro(new CargarLibros());
             } 
-            case "Prestamos" -> {
+            case "Prestamos" -> {ventanaPrincipal.mostrarEnCentro(new CargarPrestamos());
             }
     }
         

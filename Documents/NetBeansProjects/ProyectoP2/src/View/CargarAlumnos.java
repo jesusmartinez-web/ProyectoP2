@@ -192,16 +192,19 @@ public class CargarAlumnos extends javax.swing.JPanel {
         }
     }
     public void precargarDatos(Clases.Model.Alumno alumno) {
-        this.modo = "EDITAR"; // <--- OBLIGATORIO: Asegura el cambio de modo
-        nombre.setText(alumno.getNombreCompleto());
-        nroDeDoc.setText(alumno.getNroDeDocumento());
-        email.setText(alumno.getEmail());
-        telf.setText(alumno.getTelefono());
-        fechaNac.setText(alumno.getFechaDeNacimiento());
-        facuPerteneciente.setText(alumno.getFacultadPerteneciente());
-        botonCrear.setText("Guardar cambios");
-        nroDeDoc.setEditable(true);
-}
+            this.modo = "EDITAR";
+            this.docOriginal = alumno.getNroDeDocumento();
+
+            nombre.setText(alumno.getNombreCompleto());
+            nroDeDoc.setText(alumno.getNroDeDocumento());
+            email.setText(alumno.getEmail());
+            telf.setText(alumno.getTelefono());
+            fechaNac.setText(alumno.getFechaDeNacimiento());
+            facuPerteneciente.setText(alumno.getFacultadPerteneciente());
+            botonCrear.setText("Guardar cambios");
+
+            nroDeDoc.setEditable(true);
+        }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -221,4 +224,6 @@ public class CargarAlumnos extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     private String modo = "CREAR";
     private EditarAlumno panelOrigen;
+    private String docOriginal = "";
+
 }

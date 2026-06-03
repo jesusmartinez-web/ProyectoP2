@@ -108,21 +108,39 @@ public class ControladorView {
         return alumno; // devuelve null si no existe, la View solo pregunta si es null
     }
 
-    // Reemplazá el método editarAlumno que ya tenés:
-    public static boolean editarAlumno(String nroDoc, String nombre, String email,
+
+    public static boolean editarAlumno(String docOriginal, String nroDocNuevo, String nombre, String email,
                                        String telf, String fechaNac, String facultad) {
-        Clases.Model.Alumno alumno = RepositorioAlumno.alumnos.get(nroDoc);
+        
+        Clases.Model.Alumno alumno = RepositorioAlumno.alumnos.get(docOriginal);
         if (alumno == null) {
-            javax.swing.JOptionPane.showMessageDialog(null, "No se encontró el alumno.");
+            javax.swing.JOptionPane.showMessageDialog(null, "No se encontró el alumno original.");
             return false;
         }
+
+        if (!docOriginal.equals(nroDocNuevo)) {
+            if (RepositorioAlumno.alumnos.containsKey(nroDocNuevo)) {
+                javax.swing.JOptionPane.showMessageDialog(null,
+                    "El número de documento '" + nroDocNuevo + "' ya está asignado a otro alumno.",
+                    "Documento Duplicado",
+                    javax.swing.JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+
         alumno.setNombreCompleto(nombre);
+        alumno.setNroDeDocumento(nroDocNuevo);
         alumno.setEmail(email);
         alumno.setTelefono(telf);
         alumno.setFechaDeNacimiento(fechaNac);
         alumno.setFacultadPerteneciente(facultad);
+
+        if (!docOriginal.equals(nroDocNuevo)) {
+            RepositorioAlumno.alumnos.remove(docOriginal);
+            RepositorioAlumno.alumnos.put(nroDocNuevo, alumno);
+        }
+
         javax.swing.JOptionPane.showMessageDialog(null, "Alumno actualizado correctamente!");
         return true;
     }
-    
 }

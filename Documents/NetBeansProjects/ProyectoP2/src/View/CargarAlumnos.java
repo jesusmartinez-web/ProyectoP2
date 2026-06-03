@@ -156,8 +156,6 @@ public class CargarAlumnos extends javax.swing.JPanel {
         fechaNac.setText("");
         facuPerteneciente.setText("");
 
-        javax.swing.JOptionPane.showMessageDialog(this, "Alumno creado correctamente!");
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

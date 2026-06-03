@@ -15,20 +15,31 @@ public class ControladorView {
     }
 
     // Alumnos
-    public static void agregarAlumno(String nombreCompleto, String nroDoc, String email, 
-                                     String telf, String fechaNac, String facultad) {
-       Alumno alumno = new Alumno();
-       alumno.setNombreCompleto(nombreCompleto);
-       alumno.setNroDeDocumento(nroDoc);
-       alumno.setEmail(email);
-       alumno.setTelefono(telf);
-       alumno.setFechaDeNacimiento(fechaNac);
-       alumno.setFacultadPerteneciente(facultad);
+    public static boolean agregarAlumno(String nombreCompleto, String nroDoc, String email, String telf, String fechaNac, String facultad) {
 
-       ControladorRepositorio.repositorioAlumnos.anhadir(alumno);
+        // El controlador verifica si el documento ya existe
+        if (RepositorioAlumno.alumnos.containsKey(nroDoc)) {
+            javax.swing.JOptionPane.showMessageDialog(null,
+                "Ya existe un alumno con el documento: " + nroDoc +
+                "\nCambiá el número de documento para continuar.",
+                "Documento duplicado",
+                javax.swing.JOptionPane.WARNING_MESSAGE);
+            return false; // Le avisa a la View que falló
+        }
 
-       javax.swing.JOptionPane.showMessageDialog(null, "Alumno creado correctamente!");
-   }
+        Alumno alumno = new Alumno();
+        alumno.setNombreCompleto(nombreCompleto);
+        alumno.setNroDeDocumento(nroDoc);
+        alumno.setEmail(email);
+        alumno.setTelefono(telf);
+        alumno.setFechaDeNacimiento(fechaNac);
+        alumno.setFacultadPerteneciente(facultad);
+
+        ControladorRepositorio.repositorioAlumnos.anhadir(alumno);
+        javax.swing.JOptionPane.showMessageDialog(null, "Alumno creado correctamente!");
+        return true; // Le avisa a la View que funcionó
+    }
+    
     public static void agregarLibro(String titulo, String editorial, String autor, String anho) {
     Libro libro = new Libro();
     libro.setTitulo(titulo);

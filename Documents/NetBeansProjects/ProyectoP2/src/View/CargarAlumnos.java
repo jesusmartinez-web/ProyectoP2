@@ -38,7 +38,7 @@ public class CargarAlumnos extends javax.swing.JPanel {
         fechaNac = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         facuPerteneciente = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        botonCrear = new javax.swing.JButton();
 
         jLabel1.setText("Nombre");
 
@@ -60,8 +60,8 @@ public class CargarAlumnos extends javax.swing.JPanel {
 
         facuPerteneciente.addActionListener(this::facuPertenecienteActionPerformed);
 
-        jButton1.setText("Crear");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
+        botonCrear.setText("Crear");
+        botonCrear.addActionListener(this::botonCrearActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -89,7 +89,7 @@ public class CargarAlumnos extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(telf, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(7, 7, 7))))
-                    .addComponent(jButton1))
+                    .addComponent(botonCrear))
                 .addContainerGap(180, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -120,7 +120,7 @@ public class CargarAlumnos extends javax.swing.JPanel {
                     .addComponent(fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(facuPerteneciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
-                .addComponent(jButton1)
+                .addComponent(botonCrear)
                 .addContainerGap(238, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -141,9 +141,8 @@ public class CargarAlumnos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_facuPertenecienteActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        Controller.ControladorView.agregarAlumno(
+    private void botonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearActionPerformed
+        boolean creado = Controller.ControladorView.agregarAlumno(
         nombre.getText(),
         nroDeDoc.getText(),
         email.getText(),
@@ -151,13 +150,17 @@ public class CargarAlumnos extends javax.swing.JPanel {
         fechaNac.getText(),
         facuPerteneciente.getText());
 
-        nombre.setText("");
-        nroDeDoc.setText("");
-        email.setText("");
-        telf.setText("");
-        fechaNac.setText("");
-        facuPerteneciente.setText("");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    // Solo limpia los campos si el controlador confirmó que se creó bien
+        if (creado) {
+            nombre.setText("");
+            nroDeDoc.setText("");
+            email.setText("");
+            telf.setText("");
+            fechaNac.setText("");
+            facuPerteneciente.setText("");
+        }
+    // Si falló, los campos quedan llenos para que el usuario corrija el documento
+    }//GEN-LAST:event_botonCrearActionPerformed
     public void precargarDatos(Clases.Model.Alumno alumno) {
         nombre.setText(alumno.getNombreCompleto());
         nroDeDoc.setText(alumno.getNroDeDocumento());
@@ -165,15 +168,15 @@ public class CargarAlumnos extends javax.swing.JPanel {
         telf.setText(alumno.getTelefono());
         fechaNac.setText(alumno.getFechaDeNacimiento());
         facuPerteneciente.setText(alumno.getFacultadPerteneciente());
-        jButton1.setText("Guardar cambios");
+        botonCrear.setText("Guardar cambios");
 }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonCrear;
     private javax.swing.JTextField email;
     private javax.swing.JTextField facuPerteneciente;
     private javax.swing.JTextField fechaNac;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

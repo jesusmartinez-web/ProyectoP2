@@ -43,7 +43,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <Component id="jButton1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="botonCrear" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="180" max="32767" attributes="0"/>
           </Group>
@@ -83,7 +83,7 @@
                   <Component id="facuPerteneciente" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="botonCrear" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="238" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -144,12 +144,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="facuPertenecienteActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="botonCrear">
       <Properties>
         <Property name="text" type="java.lang.String" value="Crear"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCrearActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

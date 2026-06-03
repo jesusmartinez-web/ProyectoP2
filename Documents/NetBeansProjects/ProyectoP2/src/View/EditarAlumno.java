@@ -2,6 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
+
+
 package View;
 
 /**
@@ -13,13 +15,11 @@ public class EditarAlumno extends javax.swing.JPanel {
     /**
      * Creates new form EditarAlumno
      */
-    public EditarAlumno() {
+    public EditarAlumno(VentanaPrincipal ventanaPrincipal) {
         initComponents();
+        this.ventanaPrincipal = ventanaPrincipal;
         cargarTabla();
-        panelEdicion = crearPanelEdicion();
-        panelEdicion.setVisible(false);
-        add(panelEdicion, java.awt.BorderLayout.CENTER);
-    }   
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,7 +34,7 @@ public class EditarAlumno extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         campoBusqueda = new javax.swing.JTextField();
-        botonBuscar = new javax.swing.JButton();
+        botonEditar = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -53,8 +53,8 @@ public class EditarAlumno extends javax.swing.JPanel {
 
         campoBusqueda.addActionListener(this::campoBusquedaActionPerformed);
 
-        botonBuscar.setText("Editar");
-        botonBuscar.addActionListener(this::botonBuscarActionPerformed);
+        botonEditar.setText("Editar");
+        botonEditar.addActionListener(this::botonEditarActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -66,8 +66,8 @@ public class EditarAlumno extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(campoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59)
-                        .addComponent(botonBuscar))
+                        .addGap(51, 51, 51)
+                        .addComponent(botonEditar))
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -80,12 +80,12 @@ public class EditarAlumno extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonBuscar))
+                    .addComponent(botonEditar))
                 .addGap(0, 45, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     
-    // Carga todos los alumnos en la tabla al abrir el panel
+    
 private void cargarTabla() {
     javax.swing.table.DefaultTableModel modelo =
             (javax.swing.table.DefaultTableModel) jTable1.getModel();
@@ -102,7 +102,7 @@ private void cargarTabla() {
     }
 }
 
-// Crea el formulario de edición (los campos)
+
 private javax.swing.JPanel crearPanelEdicion() {
     javax.swing.JPanel panel = new javax.swing.JPanel(new java.awt.GridLayout(7, 2, 10, 10));
     panel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -127,37 +127,27 @@ private javax.swing.JPanel crearPanelEdicion() {
     return panel;
 }
     
-    private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
+    private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
 
         String doc = campoBusqueda.getText().trim();
-            if (doc.isEmpty()) {
+        if (doc.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this, "Ingresá el número de documento.");
             return;
         }
-
         Clases.Model.Alumno alumno = Controller.ControladorView.buscarAlumno(doc);
         if (alumno == null) {
-            javax.swing.JOptionPane.showMessageDialog(this, "No se encontró ningún alumno con ese documento.");
+            javax.swing.JOptionPane.showMessageDialog(this, "Alumno no encontrado.");
             return;
         }
+        CargarAlumnos formulario = new CargarAlumnos();
+        formulario.precargarDatos(alumno);
+        ventanaPrincipal.mostrarEnCentro(formulario);
 
-    // Llenar los campos con los datos encontrados
-        campoNombre.setText(alumno.getNombreCompleto());
-        campoDoc.setText(alumno.getNroDeDocumento());
-        campoEmail.setText(alumno.getEmail());
-        campoTelf.setText(alumno.getTelefono());
-        campoFechaNac.setText(alumno.getFechaDeNacimiento());
-        campoFacultad.setText(alumno.getFacultadPerteneciente());
-
-    // Ocultar la tabla y mostrar el formulario
-        jScrollPane1.setVisible(false);
-        panelEdicion.setVisible(true);
-        revalidate();
-        repaint();
-    }//GEN-LAST:event_botonBuscarActionPerformed
+    }//GEN-LAST:event_botonEditarActionPerformed
 
     private void campoBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBusquedaActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_campoBusquedaActionPerformed
     
     private void guardarCambios() {
@@ -170,7 +160,6 @@ private javax.swing.JPanel crearPanelEdicion() {
             campoFacultad.getText()
         );
 
-    // Volver a mostrar la tabla actualizada
         jScrollPane1.setVisible(true);
         panelEdicion.setVisible(false);
         cargarTabla();
@@ -186,9 +175,9 @@ private javax.swing.JPanel crearPanelEdicion() {
     private javax.swing.JTextField campoFechaNac;
     private javax.swing.JTextField campoFacultad;
     private javax.swing.JButton botonGuardar;
-    
+    private VentanaPrincipal ventanaPrincipal;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonBuscar;
+    private javax.swing.JButton botonEditar;
     private javax.swing.JTextField campoBusqueda;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

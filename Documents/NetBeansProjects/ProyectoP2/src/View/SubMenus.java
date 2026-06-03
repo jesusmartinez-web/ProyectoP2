@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
-
 /**
  *
  * @author ThinkPad
@@ -127,7 +126,7 @@ public class SubMenus extends javax.swing.JFrame {
         botonListar.setVisible(false);
 
         switch (menuActual) {
-            case "Alumnos" -> ventanaPrincipal.mostrarEnCentro(new EditarAlumno());
+            case "Alumnos" -> ventanaPrincipal.mostrarEnCentro(new View.EditarAlumno(ventanaPrincipal));
             case "Libros"  -> javax.swing.JOptionPane.showMessageDialog(this, "Próximamente: Editar Libros");
             case "Prestamos" -> javax.swing.JOptionPane.showMessageDialog(this, "Próximamente: Editar Préstamos");
         }

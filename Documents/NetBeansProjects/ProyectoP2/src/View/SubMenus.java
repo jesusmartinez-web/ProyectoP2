@@ -46,7 +46,7 @@ public class SubMenus extends javax.swing.JFrame {
         botonListar.setText("Listar");
         botonListar.setToolTipText("");
         botonListar.setContentAreaFilled(false);
-        botonListar.addActionListener(this::botonListarActionPerformed);
+        botonListar.addActionListener(this::accionListar);
 
         botonAtras.setBackground(new java.awt.Color(204, 102, 0));
         botonAtras.setText("Atras");
@@ -140,27 +140,27 @@ public class SubMenus extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_botonCrearActionPerformed
-    
-    private void botonListarActionPerformed(java.awt.event.ActionEvent evt) {
-    // Ocultar los otros botones igual que cuando se crea
+
+    private void accionListar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accionListar
+        // TODO add your handling code here:
         botonEditar.setVisible(false);
         botonCrear.setVisible(false);
         botonListar.setVisible(false);
 
-    // Según el menú donde estemos, mostrar la tabla correspondiente
+        // Según el menú donde estemos, mostrar la tabla correspondiente
         if (menuActual.equals("Alumnos")) {
 
-        // 1. Crear la tabla
+            // 1. Crear la tabla
             TablaAlumno tablaAlumno = new TablaAlumno();
 
-        // 2. Obtener el modelo (quien controla las filas)
-            javax.swing.table.DefaultTableModel modelo =
-                (javax.swing.table.DefaultTableModel) tablaAlumno.getTabla().getModel();
+            // 2. Obtener el modelo (quien controla las filas)
+            javax.swing.table.DefaultTableModel modelo
+                    = (javax.swing.table.DefaultTableModel) tablaAlumno.getTabla().getModel();
 
-        // 3. Borrar las filas vacías que trae por defecto
+            // 3. Borrar las filas vacías que trae por defecto
             modelo.setRowCount(0);
 
-        // 4. Traer los alumnos del repositorio y agregarlos fila por fila
+            // 4. Traer los alumnos del repositorio y agregarlos fila por fila
             for (Clases.Model.Alumno a : Controller.ControladorView.obtenerAlumnos()) {
                 modelo.addRow(new Object[]{
                     a.getNombreCompleto(),
@@ -172,11 +172,13 @@ public class SubMenus extends javax.swing.JFrame {
                 });
             }
 
-        // 5. Mostrar la tabla en el centro de la ventana
+            // 5. Mostrar la tabla en el centro de la ventana
             ventanaPrincipal.mostrarEnCentro(tablaAlumno);
         }
-    }
+
+    }//GEN-LAST:event_accionListar
     
+        
     /**
      * @param args the command line arguments
      */

@@ -21,17 +21,17 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="email" pref="159" max="32767" attributes="0"/>
+                          <Component id="anhoPublicacion" pref="159" max="32767" attributes="0"/>
                           <Component id="jLabel1" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
-                          <Component id="nombre" alignment="1" max="32767" attributes="0"/>
+                          <Component id="titulo" alignment="1" max="32767" attributes="0"/>
                           <Component id="jLabel4" alignment="0" min="-2" pref="152" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel3" max="32767" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <Component id="nroDeDoc" min="-2" pref="141" max="-2" attributes="0"/>
-                          <Component id="telf" min="-2" pref="159" max="-2" attributes="0"/>
+                          <Component id="editorial" min="-2" pref="141" max="-2" attributes="0"/>
+                          <Component id="autor" min="-2" pref="159" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="botonCrear" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -50,8 +50,8 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="nombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="nroDeDoc" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="titulo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="editorial" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -60,8 +60,8 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="email" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="telf" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="anhoPublicacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="autor" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
               <Component id="botonCrear" min="-2" max="-2" attributes="0"/>
@@ -76,23 +76,23 @@
         <Property name="text" type="java.lang.String" value="Titulo"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="nombre">
+    <Component class="javax.swing.JTextField" name="titulo">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Editorial"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="nroDeDoc">
+    <Component class="javax.swing.JTextField" name="editorial">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="text" type="java.lang.String" value="Autor"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="email">
+    <Component class="javax.swing.JTextField" name="anhoPublicacion">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="emailActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="anhoPublicacionActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
@@ -100,9 +100,9 @@
         <Property name="text" type="java.lang.String" value="A&#xf1;o de Publicacion"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="telf">
+    <Component class="javax.swing.JTextField" name="autor">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="telfActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="autorActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botonCrear">

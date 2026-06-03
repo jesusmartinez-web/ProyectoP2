@@ -50,16 +50,20 @@ public class ControladorView {
     javax.swing.JOptionPane.showMessageDialog(null, "Libro creado correctamente!");
 }
     public static void agregarPrestamo(String alumno, String librosTexto, String fechaPrestamo, String fechaDevolucion) {
-    Prestamo prestamo = new Prestamo();
-    prestamo.setAlumno(alumno);
-    for (String libro : librosTexto.split(",")) {
-        prestamo.agregarLibro(libro.trim());
+        Prestamo prestamo = new Prestamo();
+        prestamo.setAlumno(alumno);
+        java.util.List<String> listaLibros = new java.util.ArrayList<>();
+        for (String libro : librosTexto.split(",")) {
+            String titulo = libro.trim();
+            prestamo.agregarLibro(titulo);
+            listaLibros.add(titulo);
+        }
+        prestamo.setFechaDePrestamo(fechaPrestamo);
+        prestamo.setFechaDevolucion(fechaDevolucion);
+        ControladorRepositorio.repositorioPrestamos.anhadir(prestamo);
+        ControladorView.marcarLibrosNoDisponibles(listaLibros);
+        javax.swing.JOptionPane.showMessageDialog(null, "Préstamo creado correctamente!");
     }
-    prestamo.setFechaDePrestamo(fechaPrestamo);
-    prestamo.setFechaDevolucion(fechaDevolucion);
-    ControladorRepositorio.repositorioPrestamos.anhadir(prestamo);
-    javax.swing.JOptionPane.showMessageDialog(null, "Préstamo creado correctamente!");
-}
     
     
     public static Collection<Alumno> obtenerAlumnos() {
@@ -142,5 +146,30 @@ public class ControladorView {
 
         javax.swing.JOptionPane.showMessageDialog(null, "Alumno actualizado correctamente!");
         return true;
+    }
+    public static void marcarLibrosNoDisponibles(java.util.List<String> titulosLibros) {
+        for (Clases.Model.Libro libro : Repositorios.RepositorioLibros.libros.values()) {
+            if (titulosLibros.contains(libro.getTitulo())) {
+                libro.setDisponible(false);
+            }
+        }
+    }
+
+    public static void liberarLibros(java.util.List<String> titulosLibros) {
+        for (Clases.Model.Libro libro : Repositorios.RepositorioLibros.libros.values()) {
+            if (titulosLibros.contains(libro.getTitulo())) {
+                libro.setDisponible(true);
+            }
+        }
+    }
+
+    public static java.util.Collection<Clases.Model.Libro> obtenerLibrosDisponibles() {
+        java.util.List<Clases.Model.Libro> disponibles = new java.util.ArrayList<>();
+        for (Clases.Model.Libro libro : Repositorios.RepositorioLibros.libros.values()) {
+            if (libro.isDisponible()) {
+                disponibles.add(libro);
+            }
+        }
+        return disponibles;
     }
 }

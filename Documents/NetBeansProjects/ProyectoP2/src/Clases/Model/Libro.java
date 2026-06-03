@@ -7,7 +7,15 @@ public class Libro {
     private String editorial;
     private String anhoDePublicacion;
     private String autor;
-    
+    private boolean disponible = true;
+
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
     public int getId() {
         return id;
     }

@@ -15,7 +15,80 @@ public class CargarPrestamos2 extends javax.swing.JPanel {
      */
     public CargarPrestamos2() {
         initComponents();
+        botonSgte.addActionListener(e -> {
+            String idsTexto = nroDeDoc.getText().trim();       
+            String fechaPrestamo = fechaPrestamo1.getText().trim();  
+            String fechaDevol = fechaDeEntrega.getText().trim();  
+
+            if (idsTexto.isEmpty() || fechaPrestamo.isEmpty() || fechaDevol.isEmpty()) {
+                javax.swing.JOptionPane.showMessageDialog(null,
+                        "Completá todos los campos.", "Campos vacíos",
+                        javax.swing.JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+          
+            java.util.List<String> titulosLibros = new java.util.ArrayList<>();
+            for (String idStr : idsTexto.split(",")) {
+                try {
+                    int id = Integer.parseInt(idStr.trim());
+                    Clases.Model.Libro libro
+                            = Repositorios.RepositorioLibros.libros.get(id);
+                    if (libro == null) {
+                        javax.swing.JOptionPane.showMessageDialog(null,
+                                "No existe un libro con ID: " + id, "ID inválido",
+                                javax.swing.JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+                    titulosLibros.add(libro.getTitulo());
+                } catch (NumberFormatException ex) {
+                    javax.swing.JOptionPane.showMessageDialog(null,
+                            "ID inválido: '" + idStr.trim() + "'. Usá solo números separados por coma.",
+                            "Error de formato", javax.swing.JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
+
+       
+            Controller.ControladorView.agregarPrestamo(
+                    alumnoSeleccionado,
+                    String.join(",", titulosLibros),
+                    fechaPrestamo,
+                    fechaDevol
+            );
+
+       
+            nroDeDoc.setText("");
+            fechaPrestamo1.setText("");
+            fechaDeEntrega.setText("");
+        });
     }
+    private String alumnoSeleccionado = "";
+
+    public void setAlumno(String nombreAlumno) {
+        this.alumnoSeleccionado = nombreAlumno;
+    }
+
+    @Override
+    public void addNotify() {
+        super.addNotify();
+        cargarTablaLibros();
+    }
+    private void cargarTablaLibros() {
+        javax.swing.table.DefaultTableModel modelo =
+            (javax.swing.table.DefaultTableModel) tablaLibro1.getTabla().getModel();
+        modelo.setRowCount(0);
+        for (Clases.Model.Libro l : Controller.ControladorView.obtenerLibrosDisponibles()) { // ← cambia esto
+            modelo.addRow(new Object[]{
+                l.getId(),
+                l.getTitulo(),
+                l.getEditorial(),
+                l.getAnhoDePublicacion(),
+                l.getAutor()
+            });
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,6 +111,7 @@ public class CargarPrestamos2 extends javax.swing.JPanel {
         jLabel5.setText("Dime el  ID  o los IDs del libro o los libros a prestar, separados por coma");
 
         botonSgte.setText("Siguiente");
+        botonSgte.addActionListener(this::botonSgteActionPerformed);
 
         jLabel6.setText("Dame la fecha del Prestamo en YYYY-MM-DD");
 
@@ -81,6 +155,11 @@ public class CargarPrestamos2 extends javax.swing.JPanel {
                 .addGap(23, 23, 23))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonSgteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSgteActionPerformed
+        // TODO add your handling code here:
+        cargarTablaLibros();
+    }//GEN-LAST:event_botonSgteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -4,6 +4,9 @@
  */
 package View;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author ThinkPad
@@ -15,8 +18,44 @@ public class CargarPrestamos extends javax.swing.JPanel {
      */
     public CargarPrestamos() {
         initComponents();
+        cargarTablaAlumnos();
     }
+    
 
+    private void cargarTablaAlumnos() {
+        javax.swing.table.DefaultTableModel modelo =
+            (javax.swing.table.DefaultTableModel) tablaAlumno2.getTabla().getModel();
+        modelo.setRowCount(0);
+        for (Clases.Model.Alumno a : Controller.ControladorView.obtenerAlumnos()) {
+            modelo.addRow(new Object[]{
+                a.getNombreCompleto(),
+                a.getNroDeDocumento(),
+                a.getEmail(),
+                a.getTelefono(),
+                a.getFechaDeNacimiento(),
+                a.getFacultadPerteneciente()
+            });
+        }
+    }
+    public void CargarPrestamos() {
+        initComponents();
+        botonSgte.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String docAlumno = nroDeDoc.getText().trim();
+                Clases.Model.Alumno alumno = Controller.ControladorView.buscarAlumno(docAlumno);
+                if (alumno == null) {
+                    return; // buscarAlumno ya muestra el JOptionPane
+                }   // Pasar al paso 2 mostrando CargarPrestamos2 con el alumno seleccionado
+                VentanaPrincipal principal = (VentanaPrincipal) javax.swing.SwingUtilities.getWindowAncestor(CargarPrestamos.this);
+                if (principal != null) {
+                    CargarPrestamos2 paso2 = new CargarPrestamos2();
+                    paso2.setAlumno(alumno.getNombreCompleto());
+                    principal.mostrarEnCentro(paso2);
+                }
+            }
+        });
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,6 +73,7 @@ public class CargarPrestamos extends javax.swing.JPanel {
         jLabel5.setText("Dame el Nro de Documento del Alumno que prestara");
 
         botonSgte.setText("Siguiente");
+        botonSgte.addActionListener(this::botonSgteActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -62,6 +102,23 @@ public class CargarPrestamos extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botonSgteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSgteActionPerformed
+
+        String docAlumno = nroDeDoc.getText().trim();
+        Clases.Model.Alumno alumno = Controller.ControladorView.buscarAlumno(docAlumno);
+        if (alumno == null) {
+            return;
+        }
+
+        VentanaPrincipal principal
+                = (VentanaPrincipal) javax.swing.SwingUtilities.getWindowAncestor(this);
+        if (principal != null) {
+            CargarPrestamos2 paso2 = new CargarPrestamos2();
+            paso2.setAlumno(alumno.getNombreCompleto());
+            principal.mostrarEnCentro(paso2);
+        }
+    }//GEN-LAST:event_botonSgteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonSgte;
@@ -69,4 +126,10 @@ public class CargarPrestamos extends javax.swing.JPanel {
     private javax.swing.JTextField nroDeDoc;
     private View.TablaAlumno tablaAlumno2;
     // End of variables declaration//GEN-END:variables
+    private String alumnoSeleccionado = "";
+
+    public void setAlumno(String nombreAlumno) {
+        this.alumnoSeleccionado = nombreAlumno;
+    }
+
 }

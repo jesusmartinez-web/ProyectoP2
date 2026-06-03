@@ -34,7 +34,7 @@ public class CargarPrestamos extends javax.swing.JPanel {
         email = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         telf = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        botonCrear = new javax.swing.JButton();
 
         jLabel1.setText("Alumno");
 
@@ -48,8 +48,8 @@ public class CargarPrestamos extends javax.swing.JPanel {
 
         telf.addActionListener(this::telfActionPerformed);
 
-        jButton1.setText("Crear");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
+        botonCrear.setText("Crear");
+        botonCrear.addActionListener(this::botonCrearActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -71,7 +71,7 @@ public class CargarPrestamos extends javax.swing.JPanel {
                             .addComponent(jLabel2)
                             .addComponent(nroDeDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(telf, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jButton1))
+                    .addComponent(botonCrear))
                 .addContainerGap(138, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -94,7 +94,7 @@ public class CargarPrestamos extends javax.swing.JPanel {
                     .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(telf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(70, 70, 70)
-                .addComponent(jButton1)
+                .addComponent(botonCrear)
                 .addContainerGap(280, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -107,14 +107,23 @@ public class CargarPrestamos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_telfActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void botonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearActionPerformed
+        // TODO add your handling code here:' 
+        Controller.ControladorView.agregarPrestamo(
+                nombre.getText(),
+                nroDeDoc.getText(),
+                email.getText(),
+                telf.getText());
+        nombre.setText("");
+        nroDeDoc.setText("");
+        email.setText("");
+        telf.setText("");
+    }//GEN-LAST:event_botonCrearActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonCrear;
     private javax.swing.JTextField email;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

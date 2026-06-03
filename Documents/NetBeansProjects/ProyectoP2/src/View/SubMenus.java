@@ -136,7 +136,10 @@ public class SubMenus extends javax.swing.JFrame {
                 EditarLibro form = new EditarLibro(ventanaPrincipal);
                 ventanaPrincipal.mostrarEnCentro(form);
             }
-            case "Prestamos" -> javax.swing.JOptionPane.showMessageDialog(this, "Próximamente: Editar Préstamos");
+            case "Prestamos" -> {
+                DevolverPrestamo form = new DevolverPrestamo(ventanaPrincipal);
+                ventanaPrincipal.mostrarEnCentro(form);
+            }
         }
     }//GEN-LAST:event_botonEditarActionPerformed
 

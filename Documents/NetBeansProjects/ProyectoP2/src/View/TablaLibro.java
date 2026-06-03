@@ -38,7 +38,7 @@ public class TablaLibro extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Titulo", "ID", "Editorial", "Año De Publicacion", "Autor"
+                "ID", "Titulo", "Editorial", "Año De Publicacion", "Autor"
             }
         ));
         jScrollPane1.setViewportView(jTable1);

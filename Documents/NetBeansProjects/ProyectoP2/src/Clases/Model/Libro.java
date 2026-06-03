@@ -2,10 +2,19 @@ package Clases.Model;
 
 public class Libro {
     
+    private int id;
     private String titulo;
     private String editorial;
     private String anhoDePublicacion;
     private String autor;
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTitulo() {
         return titulo;

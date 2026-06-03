@@ -38,8 +38,7 @@ public class ControladorView {
     ControladorRepositorio.repositorioLibros.anhadir(libro);
     javax.swing.JOptionPane.showMessageDialog(null, "Libro creado correctamente!");
 }
-    public static void agregarPrestamo(String alumno, String librosTexto, 
-                                    String fechaPrestamo, String fechaDevolucion) {
+    public static void agregarPrestamo(String alumno, String librosTexto, String fechaPrestamo, String fechaDevolucion) {
     Prestamo prestamo = new Prestamo();
     prestamo.setAlumno(alumno);
     for (String libro : librosTexto.split(",")) {
@@ -47,7 +46,6 @@ public class ControladorView {
     }
     prestamo.setFechaDePrestamo(fechaPrestamo);
     prestamo.setFechaDevolucion(fechaDevolucion);
-    prestamo.setId(RepositorioPrestamos.prestamos.size() + 1);
     ControladorRepositorio.repositorioPrestamos.anhadir(prestamo);
     javax.swing.JOptionPane.showMessageDialog(null, "Préstamo creado correctamente!");
 }

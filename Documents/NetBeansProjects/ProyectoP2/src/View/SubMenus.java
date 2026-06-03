@@ -46,6 +46,7 @@ public class SubMenus extends javax.swing.JFrame {
         botonListar.setText("Listar");
         botonListar.setToolTipText("");
         botonListar.setContentAreaFilled(false);
+        botonListar.addActionListener(this::botonListarActionPerformed);
 
         botonAtras.setBackground(new java.awt.Color(204, 102, 0));
         botonAtras.setText("Atras");
@@ -136,10 +137,46 @@ public class SubMenus extends javax.swing.JFrame {
             } 
             case "Prestamos" -> {ventanaPrincipal.mostrarEnCentro(new CargarPrestamos());
             }
-    }
+        }
         
     }//GEN-LAST:event_botonCrearActionPerformed
+    
+    private void botonListarActionPerformed(java.awt.event.ActionEvent evt) {
+    // Ocultar los otros botones igual que cuando se crea
+        botonEditar.setVisible(false);
+        botonCrear.setVisible(false);
+        botonListar.setVisible(false);
 
+    // Según el menú donde estemos, mostrar la tabla correspondiente
+        if (menuActual.equals("Alumnos")) {
+
+        // 1. Crear la tabla
+            TablaAlumno tablaAlumno = new TablaAlumno();
+
+        // 2. Obtener el modelo (quien controla las filas)
+            javax.swing.table.DefaultTableModel modelo =
+                (javax.swing.table.DefaultTableModel) tablaAlumno.getTabla().getModel();
+
+        // 3. Borrar las filas vacías que trae por defecto
+            modelo.setRowCount(0);
+
+        // 4. Traer los alumnos del repositorio y agregarlos fila por fila
+            for (Clases.Model.Alumno a : Controller.ControladorView.obtenerAlumnos()) {
+                modelo.addRow(new Object[]{
+                    a.getNombreCompleto(),
+                    a.getNroDeDocumento(),
+                    a.getEmail(),
+                    a.getTelefono(),
+                    a.getFechaDeNacimiento(),
+                    a.getFacultadPerteneciente()
+                });
+            }
+
+        // 5. Mostrar la tabla en el centro de la ventana
+            ventanaPrincipal.mostrarEnCentro(tablaAlumno);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */

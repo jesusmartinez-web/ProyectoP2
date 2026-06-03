@@ -232,7 +232,45 @@ public class SubMenus extends javax.swing.JFrame {
                         p.verificarVencimiento()
                     });
                 }
-                ventanaPrincipal.mostrarEnCentro(tablaPrestamo);
+                // Filtro por alumno
+                javax.swing.table.TableRowSorter<javax.swing.table.DefaultTableModel> sorter
+                        = new javax.swing.table.TableRowSorter<>(modelo);
+                tablaPrestamo.getTabla().setRowSorter(sorter);
+
+                javax.swing.JTextField campoBusqueda = new javax.swing.JTextField();
+                javax.swing.JLabel labelFiltro = new javax.swing.JLabel("Filtrar por alumno: ");
+
+                campoBusqueda.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+                    private void filtrar() {
+                        String texto = campoBusqueda.getText().trim();
+                        if (texto.isEmpty()) {
+                            sorter.setRowFilter(null);
+                        } else {
+                            sorter.setRowFilter(javax.swing.RowFilter.regexFilter("(?i)" + texto, 0));
+                        }
+                    }
+
+                    public void insertUpdate(javax.swing.event.DocumentEvent e) {
+                        filtrar();
+                    }
+
+                    public void removeUpdate(javax.swing.event.DocumentEvent e) {
+                        filtrar();
+                    }
+
+                    public void changedUpdate(javax.swing.event.DocumentEvent e) {
+                        filtrar();
+                    }
+                });
+
+                javax.swing.JPanel panelFiltro = new javax.swing.JPanel(new java.awt.BorderLayout());
+                javax.swing.JPanel barraFiltro = new javax.swing.JPanel(new java.awt.BorderLayout(5, 0));
+                barraFiltro.add(labelFiltro, java.awt.BorderLayout.WEST);
+                barraFiltro.add(campoBusqueda, java.awt.BorderLayout.CENTER);
+                barraFiltro.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+                panelFiltro.add(barraFiltro, java.awt.BorderLayout.NORTH);
+                panelFiltro.add(tablaPrestamo, java.awt.BorderLayout.CENTER);
+                ventanaPrincipal.mostrarEnCentro(panelFiltro);
             }
         }
     }//GEN-LAST:event_accionListar

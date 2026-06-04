@@ -36,6 +36,7 @@ public class SubMenus extends javax.swing.JFrame {
         botonAtras = new View.BotonAmarilloAlPasar();
         botonCrear = new View.BotonAmarilloAlPasar();
         botonEditar = new View.BotonAmarilloAlPasar();
+        botonBorrar = new View.BotonAmarilloAlPasar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,6 +65,12 @@ public class SubMenus extends javax.swing.JFrame {
         botonEditar.setContentAreaFilled(false);
         botonEditar.addActionListener(this::botonEditarActionPerformed);
 
+        botonBorrar.setBackground(new java.awt.Color(204, 102, 0));
+        botonBorrar.setText("Borrar");
+        botonBorrar.setToolTipText("");
+        botonBorrar.setContentAreaFilled(false);
+        botonBorrar.addActionListener(this::botonBorraraccionListar);
+
         javax.swing.GroupLayout MenusLayout = new javax.swing.GroupLayout(Menus);
         Menus.setLayout(MenusLayout);
         MenusLayout.setHorizontalGroup(
@@ -74,8 +81,12 @@ public class SubMenus extends javax.swing.JFrame {
                     .addComponent(botonListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(botonEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(botonCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonAtras, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE))
                 .addContainerGap(55, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenusLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(botonBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         MenusLayout.setVerticalGroup(
             MenusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,7 +97,9 @@ public class SubMenus extends javax.swing.JFrame {
                 .addComponent(botonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(botonListar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(botonBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
                 .addComponent(botonAtras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
@@ -160,6 +173,227 @@ public class SubMenus extends javax.swing.JFrame {
         
     }//GEN-LAST:event_botonCrearActionPerformed
 
+    private void botonBorraraccionListar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBorraraccionListar
+        // TODO add your handling code here:
+        botonEditar.setVisible(false);
+        botonCrear.setVisible(false);
+        botonListar.setVisible(false);
+        botonBorrar.setVisible(false);
+
+        switch (menuActual) {
+
+            case "Alumnos" -> {
+                TablaAlumno tablaAlumno = new TablaAlumno();
+                javax.swing.table.DefaultTableModel modelo =
+                    (javax.swing.table.DefaultTableModel) tablaAlumno.getTabla().getModel();
+                modelo.setRowCount(0);
+                for (Clases.Model.Alumno a : Controller.ControladorView.obtenerAlumnos()) {
+                    modelo.addRow(new Object[]{
+                        a.getNombreCompleto(), a.getNroDeDocumento(),
+                        a.getEmail(), a.getTelefono(),
+                        a.getFechaDeNacimiento(), a.getFacultadPerteneciente()
+                    });
+                }
+                tablaAlumno.getTabla().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+                javax.swing.JLabel labelId = new javax.swing.JLabel("Nro. Documento a borrar:");
+                javax.swing.JTextField campoId = new javax.swing.JTextField(15);
+                javax.swing.JButton btnConfirmar = new javax.swing.JButton("Confirmar borrado");
+                btnConfirmar.setBackground(new java.awt.Color(180, 40, 40));
+                btnConfirmar.setForeground(java.awt.Color.WHITE);
+
+                tablaAlumno.getTabla().getSelectionModel().addListSelectionListener(e -> {
+                    if (!e.getValueIsAdjusting() && tablaAlumno.getTabla().getSelectedRow() >= 0) {
+                        int fila = tablaAlumno.getTabla().convertRowIndexToModel(tablaAlumno.getTabla().getSelectedRow());
+                        campoId.setText(modelo.getValueAt(fila, 1).toString());
+                    }
+                });
+
+                btnConfirmar.addActionListener(e -> {
+                    String doc = campoId.getText().trim();
+                    if (doc.isEmpty()) {
+                        javax.swing.JOptionPane.showMessageDialog(null, "Ingresá el número de documento.", "Campo vacío", javax.swing.JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+                    Clases.Model.Alumno alumno = Controller.ControladorView.buscarAlumno(doc);
+                    if (alumno == null) return;
+                    int confirm = javax.swing.JOptionPane.showConfirmDialog(null,
+                        "¿Borrar al alumno: " + alumno.getNombreCompleto() + "?",
+                        "Confirmar borrado", javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.WARNING_MESSAGE);
+                    if (confirm == javax.swing.JOptionPane.YES_OPTION) {
+                        Repositorios.RepositorioAlumno.alumnos.remove(doc);
+                        javax.swing.JOptionPane.showMessageDialog(null, "Alumno borrado correctamente.");
+                        modelo.setRowCount(0);
+                        for (Clases.Model.Alumno a : Controller.ControladorView.obtenerAlumnos()) {
+                            modelo.addRow(new Object[]{
+                                a.getNombreCompleto(), a.getNroDeDocumento(),
+                                a.getEmail(), a.getTelefono(),
+                                a.getFechaDeNacimiento(), a.getFacultadPerteneciente()
+                            });
+                        }
+                        campoId.setText("");
+                    }
+                });
+
+                javax.swing.JPanel panelInferior = new javax.swing.JPanel(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 8));
+                panelInferior.add(labelId);
+                panelInferior.add(campoId);
+                panelInferior.add(btnConfirmar);
+
+                javax.swing.JPanel panelBorrar = new javax.swing.JPanel(new java.awt.BorderLayout());
+                panelBorrar.add(tablaAlumno, java.awt.BorderLayout.CENTER);
+                panelBorrar.add(panelInferior, java.awt.BorderLayout.SOUTH);
+
+                ventanaPrincipal.mostrarEnCentro(panelBorrar);
+            }
+
+            case "Libros" -> {
+                TablaLibro tablaLibro = new TablaLibro();
+                javax.swing.table.DefaultTableModel modelo =
+                    (javax.swing.table.DefaultTableModel) tablaLibro.getTabla().getModel();
+                modelo.setRowCount(0);
+                for (Clases.Model.Libro l : Controller.ControladorView.obtenerLibros()) {
+                    modelo.addRow(new Object[]{
+                        l.getId(), l.getTitulo(), l.getEditorial(),
+                        l.getAnhoDePublicacion(), l.getAutor()
+                    });
+                }
+                tablaLibro.getTabla().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+                javax.swing.JLabel labelId = new javax.swing.JLabel("ID del libro a borrar:");
+                javax.swing.JTextField campoId = new javax.swing.JTextField(8);
+                javax.swing.JButton btnConfirmar = new javax.swing.JButton("Confirmar borrado");
+                btnConfirmar.setBackground(new java.awt.Color(180, 40, 40));
+                btnConfirmar.setForeground(java.awt.Color.WHITE);
+
+                tablaLibro.getTabla().getSelectionModel().addListSelectionListener(e -> {
+                    if (!e.getValueIsAdjusting() && tablaLibro.getTabla().getSelectedRow() >= 0) {
+                        int fila = tablaLibro.getTabla().convertRowIndexToModel(tablaLibro.getTabla().getSelectedRow());
+                        campoId.setText(modelo.getValueAt(fila, 0).toString());
+                    }
+                });
+
+                btnConfirmar.addActionListener(e -> {
+                    String idStr = campoId.getText().trim();
+                    if (idStr.isEmpty()) {
+                        javax.swing.JOptionPane.showMessageDialog(null, "Ingresá el ID del libro.", "Campo vacío", javax.swing.JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+                    Clases.Model.Libro libro = Controller.ControladorView.buscarLibro(idStr);
+                    if (libro == null) return;
+                    int confirm = javax.swing.JOptionPane.showConfirmDialog(null,
+                        "¿Borrar el libro: " + libro.getTitulo() + "?",
+                        "Confirmar borrado", javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.WARNING_MESSAGE);
+                    if (confirm == javax.swing.JOptionPane.YES_OPTION) {
+                        Repositorios.RepositorioLibros.libros.remove(libro.getId());
+                        javax.swing.JOptionPane.showMessageDialog(null, "Libro borrado correctamente.");
+                        modelo.setRowCount(0);
+                        for (Clases.Model.Libro l : Controller.ControladorView.obtenerLibros()) {
+                            modelo.addRow(new Object[]{
+                                l.getId(), l.getTitulo(), l.getEditorial(),
+                                l.getAnhoDePublicacion(), l.getAutor()
+                            });
+                        }
+                        campoId.setText("");
+                    }
+                });
+
+                javax.swing.JPanel panelInferior = new javax.swing.JPanel(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 8));
+                panelInferior.add(labelId);
+                panelInferior.add(campoId);
+                panelInferior.add(btnConfirmar);
+
+                javax.swing.JPanel panelBorrar = new javax.swing.JPanel(new java.awt.BorderLayout());
+                panelBorrar.add(tablaLibro, java.awt.BorderLayout.CENTER);
+                panelBorrar.add(panelInferior, java.awt.BorderLayout.SOUTH);
+
+                ventanaPrincipal.mostrarEnCentro(panelBorrar);
+            }
+
+            case "Prestamos" -> {
+                TablaPrestamo tablaPrestamo = new TablaPrestamo();
+                javax.swing.table.DefaultTableModel modelo =
+                    (javax.swing.table.DefaultTableModel) tablaPrestamo.getTabla().getModel();
+                modelo.setRowCount(0);
+                for (Clases.Model.Prestamo p : Controller.ControladorView.obtenerPrestamos()) {
+                    String librosUnidos = String.join(", ", p.getLibros());
+                    modelo.addRow(new Object[]{
+                        p.getAlumno(), librosUnidos, p.getId(),
+                        p.getFechaDePrestamo(), p.getFechaDevolucion(),
+                        p.getFechaDevuelta() != null ? p.getFechaDevuelta() : "Pendiente",
+                        p.verificarVencimiento()
+                    });
+                }
+                tablaPrestamo.getTabla().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+                javax.swing.JLabel labelId = new javax.swing.JLabel("ID del préstamo a borrar:");
+                javax.swing.JTextField campoId = new javax.swing.JTextField(8);
+                javax.swing.JButton btnConfirmar = new javax.swing.JButton("Confirmar borrado");
+                btnConfirmar.setBackground(new java.awt.Color(180, 40, 40));
+                btnConfirmar.setForeground(java.awt.Color.WHITE);
+
+                tablaPrestamo.getTabla().getSelectionModel().addListSelectionListener(e -> {
+                    if (!e.getValueIsAdjusting() && tablaPrestamo.getTabla().getSelectedRow() >= 0) {
+                        int fila = tablaPrestamo.getTabla().convertRowIndexToModel(tablaPrestamo.getTabla().getSelectedRow());
+                        campoId.setText(modelo.getValueAt(fila, 2).toString());
+                    }
+                });
+
+                btnConfirmar.addActionListener(e -> {
+                    String idStr = campoId.getText().trim();
+                    if (idStr.isEmpty()) {
+                        javax.swing.JOptionPane.showMessageDialog(null, "Ingresá el ID del préstamo.", "Campo vacío", javax.swing.JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+                    int idPrestamo;
+                    try {
+                        idPrestamo = Integer.parseInt(idStr);
+                    } catch (NumberFormatException ex) {
+                        javax.swing.JOptionPane.showMessageDialog(null, "El ID debe ser un número.", "ID inválido", javax.swing.JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+                    Clases.Model.Prestamo prestamo = Repositorios.RepositorioPrestamos.prestamos.get(idPrestamo);
+                    if (prestamo == null) {
+                        javax.swing.JOptionPane.showMessageDialog(null, "No existe préstamo con ID: " + idPrestamo, "No encontrado", javax.swing.JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+                    int confirm = javax.swing.JOptionPane.showConfirmDialog(null,
+                        "¿Borrar el préstamo ID " + idPrestamo + " del alumno: " + prestamo.getAlumno() + "?",
+                        "Confirmar borrado", javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.WARNING_MESSAGE);
+                    if (confirm == javax.swing.JOptionPane.YES_OPTION) {
+                        Controller.ControladorView.liberarLibros(prestamo.getLibros());
+                        Repositorios.RepositorioPrestamos.prestamos.remove(idPrestamo);
+                        javax.swing.JOptionPane.showMessageDialog(null, "Préstamo borrado correctamente.");
+                        modelo.setRowCount(0);
+                        for (Clases.Model.Prestamo p : Controller.ControladorView.obtenerPrestamos()) {
+                            String librosUnidos = String.join(", ", p.getLibros());
+                            modelo.addRow(new Object[]{
+                                p.getAlumno(), librosUnidos, p.getId(),
+                                p.getFechaDePrestamo(), p.getFechaDevolucion(),
+                                p.getFechaDevuelta() != null ? p.getFechaDevuelta() : "Pendiente",
+                                p.verificarVencimiento()
+                            });
+                        }
+                        campoId.setText("");
+                    }
+                });
+
+                javax.swing.JPanel panelInferior = new javax.swing.JPanel(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 8));
+                panelInferior.add(labelId);
+                panelInferior.add(campoId);
+                panelInferior.add(btnConfirmar);
+
+                javax.swing.JPanel panelBorrar = new javax.swing.JPanel(new java.awt.BorderLayout());
+                panelBorrar.add(tablaPrestamo, java.awt.BorderLayout.CENTER);
+                panelBorrar.add(panelInferior, java.awt.BorderLayout.SOUTH);
+
+                ventanaPrincipal.mostrarEnCentro(panelBorrar);
+            }
+    }
+
+        
+    }//GEN-LAST:event_botonBorraraccionListar
+
     private void accionListar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accionListar
         botonEditar.setVisible(false);
         botonCrear.setVisible(false);
@@ -170,7 +404,7 @@ public class SubMenus extends javax.swing.JFrame {
             case "Alumnos" -> {
                 TablaAlumno tablaAlumno = new TablaAlumno();
                 javax.swing.table.DefaultTableModel modelo =
-                    (javax.swing.table.DefaultTableModel) tablaAlumno.getTabla().getModel();
+                (javax.swing.table.DefaultTableModel) tablaAlumno.getTabla().getModel();
                 modelo.setRowCount(0);
                 for (Clases.Model.Alumno a : Controller.ControladorView.obtenerAlumnos()) {
                     modelo.addRow(new Object[]{
@@ -183,16 +417,16 @@ public class SubMenus extends javax.swing.JFrame {
                     });
                 }
                 java.util.Comparator<Object> comparatorNombre = (a1, b)
-                        -> a1.toString().compareToIgnoreCase(b.toString());
+                -> a1.toString().compareToIgnoreCase(b.toString());
 
                 java.util.Comparator<Object> comparatorEdad = (a1, b)
-                        -> a1.toString().compareTo(b.toString());
+                -> a1.toString().compareTo(b.toString());
 
                 javax.swing.table.TableRowSorter<javax.swing.table.DefaultTableModel> sorter
-                        = new javax.swing.table.TableRowSorter<>(modelo);
+                = new javax.swing.table.TableRowSorter<>(modelo);
 
-                sorter.setComparator(0, comparatorNombre); 
-                sorter.setComparator(4, comparatorEdad);  
+                sorter.setComparator(0, comparatorNombre);
+                sorter.setComparator(4, comparatorEdad);
 
                 tablaAlumno.getTabla().setRowSorter(sorter);
                 ventanaPrincipal.mostrarEnCentro(tablaAlumno);
@@ -201,7 +435,7 @@ public class SubMenus extends javax.swing.JFrame {
             case "Libros" -> {
                 TablaLibro tablaLibro = new TablaLibro();
                 javax.swing.table.DefaultTableModel modelo =
-                    (javax.swing.table.DefaultTableModel) tablaLibro.getTabla().getModel();
+                (javax.swing.table.DefaultTableModel) tablaLibro.getTabla().getModel();
                 modelo.setRowCount(0);
                 for (Clases.Model.Libro l : Controller.ControladorView.obtenerLibros()) {
                     modelo.addRow(new Object[]{
@@ -218,7 +452,7 @@ public class SubMenus extends javax.swing.JFrame {
             case "Prestamos" -> {
                 TablaPrestamo tablaPrestamo = new TablaPrestamo();
                 javax.swing.table.DefaultTableModel modelo =
-                    (javax.swing.table.DefaultTableModel) tablaPrestamo.getTabla().getModel();
+                (javax.swing.table.DefaultTableModel) tablaPrestamo.getTabla().getModel();
                 modelo.setRowCount(0);
                 for (Clases.Model.Prestamo p : Controller.ControladorView.obtenerPrestamos()) {
                     String librosUnidos = String.join(", ", p.getLibros());
@@ -234,7 +468,7 @@ public class SubMenus extends javax.swing.JFrame {
                 }
 
                 javax.swing.table.TableRowSorter<javax.swing.table.DefaultTableModel> sorter
-                        = new javax.swing.table.TableRowSorter<>(modelo);
+                = new javax.swing.table.TableRowSorter<>(modelo);
                 tablaPrestamo.getTabla().setRowSorter(sorter);
 
                 javax.swing.JTextField campoBusqueda = new javax.swing.JTextField();
@@ -263,36 +497,34 @@ public class SubMenus extends javax.swing.JFrame {
                     }
                 });
 
-
                 sorter.setComparator(3, java.util.Comparator.comparing(Object::toString));
                 sorter.setComparator(4, java.util.Comparator.comparing(Object::toString));
-
 
                 javax.swing.JButton botonFechaPrestamo   = new javax.swing.JButton("Ordenar por F. Préstamo");
                 javax.swing.JButton botonFechaDevolucion = new javax.swing.JButton("Ordenar por F. Devolución");
                 botonFechaPrestamo.addActionListener(e -> sorter.setSortKeys(
                     java.util.List.of(new javax.swing.RowSorter.SortKey(3, javax.swing.SortOrder.ASCENDING))));
-                botonFechaDevolucion.addActionListener(e -> sorter.setSortKeys(
-                    java.util.List.of(new javax.swing.RowSorter.SortKey(4, javax.swing.SortOrder.ASCENDING))));
+            botonFechaDevolucion.addActionListener(e -> sorter.setSortKeys(
+                java.util.List.of(new javax.swing.RowSorter.SortKey(4, javax.swing.SortOrder.ASCENDING))));
 
-                javax.swing.JPanel panelBotones = new javax.swing.JPanel(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
-                panelBotones.add(botonFechaPrestamo);
-                panelBotones.add(botonFechaDevolucion);
+        javax.swing.JPanel panelBotones = new javax.swing.JPanel(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
+        panelBotones.add(botonFechaPrestamo);
+        panelBotones.add(botonFechaDevolucion);
 
-                javax.swing.JPanel barraFiltro = new javax.swing.JPanel(new java.awt.BorderLayout(5, 0));
-                barraFiltro.add(labelFiltro, java.awt.BorderLayout.WEST);
-                barraFiltro.add(campoBusqueda, java.awt.BorderLayout.CENTER);
-                barraFiltro.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        javax.swing.JPanel barraFiltro = new javax.swing.JPanel(new java.awt.BorderLayout(5, 0));
+        barraFiltro.add(labelFiltro, java.awt.BorderLayout.WEST);
+        barraFiltro.add(campoBusqueda, java.awt.BorderLayout.CENTER);
+        barraFiltro.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
-                javax.swing.JPanel panelSuperior = new javax.swing.JPanel(new java.awt.BorderLayout());
-                panelSuperior.add(barraFiltro, java.awt.BorderLayout.NORTH);
-                panelSuperior.add(panelBotones, java.awt.BorderLayout.SOUTH);
+        javax.swing.JPanel panelSuperior = new javax.swing.JPanel(new java.awt.BorderLayout());
+        panelSuperior.add(barraFiltro, java.awt.BorderLayout.NORTH);
+        panelSuperior.add(panelBotones, java.awt.BorderLayout.SOUTH);
 
-                javax.swing.JPanel panelFiltro = new javax.swing.JPanel(new java.awt.BorderLayout());
-                panelFiltro.add(panelSuperior, java.awt.BorderLayout.NORTH);
-                panelFiltro.add(tablaPrestamo, java.awt.BorderLayout.CENTER);
-                ventanaPrincipal.mostrarEnCentro(panelFiltro);
-            }
+        javax.swing.JPanel panelFiltro = new javax.swing.JPanel(new java.awt.BorderLayout());
+        panelFiltro.add(panelSuperior, java.awt.BorderLayout.NORTH);
+        panelFiltro.add(tablaPrestamo, java.awt.BorderLayout.CENTER);
+        ventanaPrincipal.mostrarEnCentro(panelFiltro);
+        }
         }
     }//GEN-LAST:event_accionListar
     
@@ -324,6 +556,7 @@ public class SubMenus extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Menus;
     private View.BotonAmarilloAlPasar botonAtras;
+    private View.BotonAmarilloAlPasar botonBorrar;
     private View.BotonAmarilloAlPasar botonCrear;
     private View.BotonAmarilloAlPasar botonEditar;
     private View.BotonAmarilloAlPasar botonListar;
